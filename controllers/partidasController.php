@@ -1,5 +1,5 @@
 <?php
-
+//La primera pantalla
 function registrar(){
     if (count($_POST) > 0) {
         function seguro($valor)
@@ -10,7 +10,7 @@ function registrar(){
             return $valor;
         }
         include_once "./models/partidasModel.php";
-        $idPartida = setPartida(seguro($_POST["nombre"]));
+        $idPartida = setPartida(seguro($_POST["mote"]));
         header("Location: ./index.php?controller=partidas&action=iniciar");
         
     } else {
@@ -18,6 +18,23 @@ function registrar(){
     }
 }
 
+//La primera provincia
 function iniciar(){
     include_once "./views/provincia1.php";
 }
+
+//Antes de ir a la pantalla de resultado
+function actualizar(){
+    include_once "./models/partidasModel.php";
+    $cumplido= updatePartida($_GET["puntos"], $_GET["vida"], $_GET["tiempo"]);
+    header("Location: ./index.php?controller=partidas&action=resultado");
+}
+
+function resultado(){
+    include_once "./models/partidasModel.php";
+    $partidas = getPartidas();
+    include_once "./views/resultado.php";
+
+}
+
+
