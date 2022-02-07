@@ -4,7 +4,8 @@ function getConnection()
 {
    $user = 'root';
    $password = 'root';
-   return new PDO('mysql:host=localhost;dbname=JuegoMonumentos', $user, $password);
+   $dbname = 'JuegoMonumentos';
+   return new PDO('mysql:host=localhost;dbname=' . $dbname, $user, $password);
 }
 
 function getPartidas()
