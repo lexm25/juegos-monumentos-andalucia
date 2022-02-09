@@ -26,10 +26,9 @@ function iniciar(){
 //Antes de ir a la pantalla de resultado
 function actualizar(){
     include_once "./models/partidasModel.php";
-    $cumplido= updatePartida($_GET["puntos"], $_GET["vida"], $_GET["tiempo"]);
-    header("Location: ./index.php?controller=partidas&action=resultado");
+    $cumplido= updatePartida(intval($_POST["puntos"]), intval($_POST["vida"]), $_POST["tiempo"]);
 }
-
+//La pantalla de resultado
 function resultado(){
     include_once "./models/partidasModel.php";
     $partidas = getPartidas();
