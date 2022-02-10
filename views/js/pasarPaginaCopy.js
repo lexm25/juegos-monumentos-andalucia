@@ -11,6 +11,8 @@ $(document).ready(function () {
     //Registro de evento al presionar la tecla flecha para mover a la derecha
     $(document).on("keydown", mover);
 
+
+
     //Se establece el valor inicial del cronómetro
     $("#cronometro").text(m + ":" + s);
 
@@ -78,3 +80,4 @@ function mover(e) {
        
     }
 }
+
