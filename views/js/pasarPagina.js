@@ -8,6 +8,10 @@ var modalShown=false;
 $(document).ready(function () {
     //Registro de evento al presionar la tecla flecha para mover a la derecha
     $(document).on("keydown", mover);
+    //Si se cierra el modal, puede continuar moviéndose
+    $(".btn , .btn-close").on("click",function() {
+        $(document).on("keydown", mover);
+    })
     //Se establece el valor inicial del cronómetro
     $("#cronometro").text(m + ":" + s);
 
@@ -28,11 +32,19 @@ $(document).ready(function () {
 function mover(e) {
     e.preventDefault();
     if (e.keyCode == 39) {
+        //Movimiento de la hormiga
+        if($("#div img").attr("src")== "./../images/ant2.png"){
+            $("#div img").attr("src","./../images/ant1.png");
+        }else{
+            $("#div img").attr("src","./../images/ant2.png");
+        }
+
         var left = parseInt($("#div").css("left")) + 10;
         $("#div").css("left", left + "px");
-        if (parseInt($("#div").css("left").split(/px/)[0]) >= parseInt($("img").css("left").split(/px/)[0])) {
+        if (parseInt($("#div").css("left").split(/px/)[0]) >= parseInt($("#monumento").css("left").split(/px/)[0])) {
             if(modalShown==false){
                 modalShown=true;
+                $(document).off("keydown");
                 $("#modal").modal("show");
             }
         }
@@ -51,7 +63,7 @@ function mover(e) {
             type: "get",
             success: function (response) {
                 var provincia= JSON.parse(response);
-                $("body").css("background-image","url(./../images/"+provincia[0].fondo + ")");
+                $("#fondo").css("background","linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)), url(./../images/"+provincia[0].fondo + ")");
                 $("#monumento").attr("src","./../images/"+provincia[0].imagen);
             }
         });

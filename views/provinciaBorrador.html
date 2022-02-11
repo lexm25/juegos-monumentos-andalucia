@@ -12,67 +12,72 @@
     <title>Preguntas monumentos</title>
 </head>
 
-<body style="background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url('./../images/plazaesp.jpg');
+<body>
+    <h1>Monumento</h1>
+        <div id="cronometro"></div>
+    <div id="fondo" style="height: 500px; background: linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)), url('./../images/sueloSevilla.jpg');
                 background-repeat: no-repeat;
                 background-size: cover;">
-    <h1>Monumento</h1>
-    <div id="cronometro"></div>
+        
 
-    <div class="text-center" id="div" style="position: absolute;">
-        <div  id="div" style="background-color: blue; width: 150px; width: 150px; position: relative;">
+        <div class="text-center" id="div" style="position: absolute;z-index:1; top:300px">
+            <img src="./../images/ant2.png" width="200px">
+        </div>
+
+        <div class="text-center">
+            <img id="monumento" class="img-fluid" src="../images/archivo-indias-1.jpg" alt=""
+                style="width: 200px; height: 200px; position: absolute;top:300px">
+        </div>
+
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Launch static backdrop modal
+         <div  id="div" style="background-color: blue; width: 150px; width: 150px; position: relative;">
             cuadrado
         </div>
-    </div>
-
-    <div class="text-center" >
-        <img id="monumento" class="img-fluid" src="../images/archivo-indias-1.jpg" alt="" style="width: 200px; height: 200px; position: absolute;">
-    </div>
-
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Launch static backdrop modal
     </button> -->
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">¿En qué año se creó el Archivo de Indias?
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="col">
-                        <img src="../images/archivo-indias-1.jpg" class="img-fluid rounded" alt="Archivo de Indias">
+        <!-- Modal -->
+        <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">¿En qué año se creó el Archivo de
+                            Indias?
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="col text-center py-4">
-                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined"
-                            autocomplete="off">
-                        <label class="btn btn-outline-info" for="danger-outlined">1492</label>
+                    <div class="modal-body">
+                        <div class="col">
+                            <img src="../images/archivo-indias-1.jpg" class="img-fluid rounded" alt="Archivo de Indias">
+                        </div>
+                        <div class="col text-center py-4">
+                            <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined"
+                                autocomplete="off">
+                            <label class="btn btn-outline-info" for="danger-outlined">1492</label>
 
-                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined-2"
-                            autocomplete="off">
-                        <label class="btn btn-outline-info text-black" for="danger-outlined-2">2012</label>
+                            <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined-2"
+                                autocomplete="off">
+                            <label class="btn btn-outline-info text-black" for="danger-outlined-2">2012</label>
 
-                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined-3"
-                            autocomplete="off">
-                        <label class="btn btn-outline-info " for="danger-outlined-3">1985</label>
+                            <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined-3"
+                                autocomplete="off">
+                            <label class="btn btn-outline-info " for="danger-outlined-3">1985</label>
 
-                        <input type="radio" class="btn-check" name="options-outlined" id="success-outlined-4"
-                            autocomplete="off">
-                        <label class="btn btn-outline-info" for="success-outlined-4">1785</label>
+                            <input type="radio" class="btn-check" name="options-outlined" id="success-outlined-4"
+                                autocomplete="off">
+                            <label class="btn btn-outline-info" for="success-outlined-4">1785</label>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
