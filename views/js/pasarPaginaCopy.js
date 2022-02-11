@@ -2,12 +2,15 @@
 // se definen con los segundos y los minutos de la pantalla anterior
 var s = 0;
 var m = 0;
+var modalShown;
+
 if (sessionStorage.getItem("s") != null) {
     s = sessionStorage.getItem("s");
     m = sessionStorage.getItem("m");
 }
 
 $(document).ready(function () {
+    modalShown=false;
     //Registro de evento al presionar la tecla flecha para mover a la derecha
     $(document).on("keydown", mover);
 
@@ -33,10 +36,13 @@ $(document).ready(function () {
 function mover(e) {
     e.preventDefault();
     if (e.keyCode == 39) {
-        var left = parseInt($("#div").css("left")) + 20;
+        var left = parseInt($("#div").css("left")) + 10;
         $("#div").css("left", left + "px");
-        if (parseInt($("#div").css("left").split(/px/)[0]) == parseInt($("img").css("left").split(/px/)[0])) {
-            $("#modal").modal("show");
+        if (parseInt($("#div").css("left").split(/px/)[0]) >= parseInt($("img").css("left").split(/px/)[0])) {
+            if(modalShown==false){
+                modalShown=true;
+                $("#modal").modal("show");
+            }
         }
     }
 
