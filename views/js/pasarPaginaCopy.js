@@ -17,15 +17,15 @@ $(document).ready(function () {
     $("#cronometro").text(m + ":" + s);
 
     //Actualizar nuestro cronómetro cada segundo
-    setInterval(() => {
-        s++;
-        if (s >= 60) {
-            m++;
-            s = 0;
-        }
+    // setInterval(() => {
+    //     s++;
+    //     if (s >= 60) {
+    //         m++;
+    //         s = 0;
+    //     }
         
-        $("#cronometro").text(m + ":" + s);
-    }, 1000);
+    //     $("#cronometro").text(m + ":" + s);
+    // }, 1000);
 
 });
 
@@ -35,8 +35,8 @@ function mover(e) {
     if (e.keyCode == 39) {
         var left = parseInt($("#div").css("left")) + 20;
         $("#div").css("left", left + "px");
-        if ($("#div").css("left") == $("img").css("left")) {
-            $("#modal").show();
+        if (parseInt($("#div").css("left").split(/px/)[0]) == parseInt($("img").css("left").split(/px/)[0])) {
+            $("#modal").modal("show");
         }
     }
 
