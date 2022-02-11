@@ -8,23 +8,11 @@ function getConnection()
    return new PDO('mysql:host=localhost;dbname=' . $dbname, $user, $password);
 }
 
-function getPreguntas()
-{
-   $con = getConnection();
-   $result = $con->query('SELECT * FROM preguntas');
-   $filas = [];
-   while ($fila = $result->fetch()) {
-      $filas[] = $fila;
-   }
-   $con = null;
-   return $filas;
-}
 
-
-function getPregunta($id){
+function getProvincia($id){
     try {
         $conexion = getConnection();
-        $sql = $conexion->prepare("SELECT * FROM preguntas where id= :id");
+        $sql = $conexion->prepare("SELECT * FROM provincias where id= :id");
         $sql->bindParam(":id", $id);
         $sql->execute();
   
