@@ -14,14 +14,14 @@
 
 <body>
     <h1>Monumento</h1>
-        <div id="cronometro"></div>
+    <div id="cronometro"></div>
     <div id="fondo" style="height: 500px; background: linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)), url('./../images/sueloSevilla.jpg');
                 background-repeat: no-repeat;
                 background-size: cover;">
-        
+
 
         <div class="text-center" id="div" style="position: absolute;z-index:1; top:300px">
-            <img src="./../images/ant2.png" width="200px">
+            <img src="" width="200px">
         </div>
 
         <div class="text-center">
@@ -72,6 +72,44 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalMunieco" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">¿Cuál eliges para tu personaje?
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <input type="radio" class="btn-check" name="options-outlined" id="m1"
+                            autocomplete="off">
+                        <label class="btn btn-outline-info" for="m1"><img src="./../images/Crab/49839aa1b0feed02a3c759db5f8dee71.svg" width="200px" height="200px"></label>
+
+                        <input type="radio" class="btn-check" name="options-outlined" id="m2"
+                            autocomplete="off">
+                        <label class="btn btn-outline-info text-black" for="m2"><img src="./../images/Dog2/4708bff29b3a295a03ac1d5e2d16ec75.svg" width="200px" height="200px"></label>
+
+                        <input type="radio" class="btn-check" name="options-outlined" id="m3"
+                            autocomplete="off">
+                        <label class="btn btn-outline-info " for="m3"><img src="./../images/Bear-walking/0a38a860f2e573b8dc5b09f390d30fbd.svg" width="200px" height="200px"></label>
+
+                        <input type="radio" class="btn-check" name="options-outlined" id="m4"
+                            autocomplete="off">
+                        <label class="btn btn-outline-info " for="m4"><img src="./../images/Cat/0fb9be3e8397c983338cb71dc84d0b25.svg" width="200px" height="200px"></label>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button id="modalMuniecoEvento" type="button" class="btn btn-danger" data-bs-dismiss="modal">Play!</button>
 
                     </div>
                 </div>
