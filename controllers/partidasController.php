@@ -28,6 +28,14 @@ function actualizar(){
     include_once "./models/partidasModel.php";
     $cumplido= updatePartida(intval($_POST["puntos"]), intval($_POST["vida"]), $_POST["tiempo"]);
 }
+
+//El ranking de las partidas numeradas
+function ranking(){
+    include_once "./models/partidasModel.php";
+    $partidasRanking= getTodasPartidasNumeradas();
+    echo json_encode($partidasRanking);
+}
+
 //La pantalla de resultado
 function resultado(){
     include_once "./models/partidasModel.php";

@@ -20,6 +20,19 @@ function getPartidas()
    return $filas;
 }
 
+function getTodasPartidasNumeradas()
+{
+   $con = getConnection();
+   $result = $con->query('SELECT @rownum:=@rownum+1 AS rownum, partidas.* FROM (SELECT @rownum:=0) r, partidas ORDER BY `puntos` DESC , `vida` DESC, tiempo ASC;');
+   $filas = [];
+   while ($fila = $result->fetch()) {
+      $filas[] = $fila;
+   }
+   $con = null;
+   return $filas;
+}
+
+
 
 function setPartida($mote){
    try {
@@ -34,6 +47,7 @@ function setPartida($mote){
   $con = null;
   return $id;
 }
+
 
 function updatePartida($puntos,$vida,$tiempo)
 {
