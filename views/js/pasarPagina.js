@@ -44,13 +44,13 @@ function mover(e) {
         sessionStorage.setItem("s", s);
         sessionStorage.setItem("m", m);
 
-        if (numProvincia == 0) {
+        if (numProvincia == 8) {
             //Enviar los datos al servidor en el caso de la última provincia
             var sBD=s,mBD=m;
-            if(s<9){
+            if(s<=9){
                 sBD="0" + s;
             }
-            if(m<9){
+            if(m<=9){
                 mBD="0" + m;
             }
             var datos = {
