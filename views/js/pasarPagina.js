@@ -126,8 +126,8 @@ function mover(e) {
             type: "get",
             success: function (response) {
                 var provincia = JSON.parse(response);
-                $("#fondo").css("background", "linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)), url(./../images/" + provincia[0].fondo + ")");
-                $("#monumento").attr("src", "./../images/" + provincia[0].imagen);
+                $("#fondo").css("background", "linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)), url(././images/" + provincia[0].fondo + ")");
+                $("#monumento").attr("src", "././images/" + provincia[0].imagen);
             }
         });
         provincia++;

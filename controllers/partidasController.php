@@ -23,7 +23,7 @@ function registrar(){
 
 //La primera provincia
 function iniciar(){
-    include_once "./views/provinciaBorrador.html";
+    header("Location: ./views/provinciaBorrador.html");
 }
 
 //Antes de ir a la pantalla de resultado
