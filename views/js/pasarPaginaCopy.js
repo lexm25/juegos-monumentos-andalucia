@@ -109,6 +109,7 @@ function mover(e) {
                 modalShown = true;
                 $(document).off("keydown");
                 $("#modal").modal("show");
+                
             }
         }
     }
