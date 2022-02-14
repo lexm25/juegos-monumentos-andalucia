@@ -82,16 +82,16 @@
     <div class="col-4" id="prueba">
       <div class="text-center">
         <!--RUTA INDEX.PHP-->
-        <form action="./index.php" method="post">
+        <form action="../index.php?action=registrar" method="post">
           <div id="separador"></div>
           <label style="font-size: 30px;">INTRODUZCA SU MOTE</label>
           <div id="separador">
             <br>
             <input type="text" class="form-control"
-              style="background-color: lightgray; opacity: 65%; text-decoration: none;">
+              style="background-color: lightgray; opacity: 65%; text-decoration: none;" name="mote">
             <div id="separador">
               <br>
-              <a href="#" class="w-100 btn btn-lg" id="login">Entrar</a>
+              <input type="submit" class="w-100 btn btn-lg" id="login" value="Entrar">
             </div>
         </form>
       </div>
