@@ -133,7 +133,7 @@ function mover(e) {
         provincia++;
 
         //Enviar los datos al servidor en el caso de la última provincia
-        if (provincia == 4) {
+        if (provincia == 3) {
             var sBD = s, mBD = m;
             if (s < 9) {
                 sBD = "0" + s;
@@ -153,7 +153,7 @@ function mover(e) {
                 type: "post",
                 success: function () {
                     //Vamos a la página de resultado
-                    window.location.replace("http://localhost/juegos-monumentos-andalucia/index.php?action=resultado");
+                    window.location.replace("../index.php?action=resultado");
                 }
             });
         }
