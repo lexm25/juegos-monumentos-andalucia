@@ -8,6 +8,7 @@ sessionStorage.setItem("vida", 5);
 sessionStorage.setItem("puntos", 0);
 
 $(document).ready(function () {
+    $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i>")
     $("#modalMunieco").modal("show");
     $("#modalMuniecoEvento").click(function () {
         var muniecoSeleccionado = [...$(this).parent().parent().find(".modal-body").children()].filter((m) => m.checked == true);
@@ -22,9 +23,24 @@ $(document).ready(function () {
             $("body").append("<audio src='./../images/Cat/83c36d806dc92327b9e7049a565c6bff.wav' autoplay></audio>")
         } else {
             $("body").append("<audio src='./../images/Crab/83a9787d4cb6f3b7632b4ddfebf74367.wav' autoplay></audio>")
-
         }
 
+        //Si cierra el modal y no ha acertado
+      /*  var last=  $("#vidas").last();
+        for (let i = 4; i >= 0; i++) {
+            if(last.hasClass("fas")){
+               last.removeClass("fas").addClass("fal");
+               sessionStorage.setItem("vida" ,parseInt(sessionStorage.getItem("vida")) - 1 );
+               break;
+            }else{
+                if(i==0){
+                    //GameOver : Ir a la página de Register o una página de GameOver que ha perdido toda la vida
+                }
+                last=last.parent().eq(i);
+            }
+        }
+
+*/
     })
 
 
@@ -33,18 +49,26 @@ $(document).ready(function () {
         $(document).on("keydown", mover);
     })
     //Se establece el valor inicial del cronómetro
-    $("#cronometro").text(m + ":" + s);
+    $("#cronometro").text("00:00");
 
     //Actualizar nuestro cronómetro cada segundo
-    /* setInterval(() => {
-         s++;
-         if (s >= 60) {
+   
+     setInterval(() => {
+        s++;
+        if (s >= 60) {
              m++;
              s = 0;
-         }
- 
-         $("#cronometro").text(m + ":" + s);
-     }, 1000);*/
+        }
+        var sBD= s;
+        var mBD= m;
+        if (s < 10) {
+            sBD = "0" + s;
+        }
+        if (m < 10) {
+            mBD = "0" + m;
+        }
+         $("#cronometro").text(mBD + ":" + sBD);
+     }, 1000);
 
 });
 
@@ -144,6 +168,15 @@ function mover(e) {
                     }, 500, function () {
                         $("#heart").remove();
 
+                        var last=  $("#vidas").last();
+                        /*for (let i = 4; i >= 0; i++) {
+                            if(last.hasClass("fal")){
+                               last.removeClass("fal").addClass("fas");
+                               break;
+                            }else{
+                                last=last.parent().eq(i);
+                            }
+                        }*/
                     });
                 }
 
@@ -193,7 +226,7 @@ if (window.innerWidth <= leftMunieco + parseInt($("#munieco").css("width").split
         var datos = {
             vida: sessionStorage.getItem("vida"),
             puntos: sessionStorage.getItem("puntos"),
-            tiempo: "00:" + mBD + ":" + sBD,
+            tiempo: "00:" + $("#cronometro").text(),
         };
 
         $.ajax({
