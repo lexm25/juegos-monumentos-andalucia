@@ -14,6 +14,7 @@ function registrar(){
         }
         include_once "./models/partidasModel.php";
         $idPartida = setPartida(seguro($_POST["mote"]));
+        session_start();
         header("Location: ./index.php?controller=partidas&action=iniciar");
         
     } else {
@@ -34,11 +35,11 @@ function actualizar(){
 
 //El ranking de las partidas numeradas
 function ranking(){
-    include_once "./models/partidasModel.php";
+    include_once "../models/partidasModel.php";
     $partidasRanking= getTodasPartidasNumeradas();
-    echo json_encode($partidasRanking);
+    echo $_SESSION["idPartida"] ."". json_encode($partidasRanking);
 }
-
+ranking();
 //La pantalla de resultado
 function resultado(){
     include_once "./models/partidasModel.php";
