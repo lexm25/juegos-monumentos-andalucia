@@ -31,7 +31,7 @@
     }
 
     body {
-      background-image: url("../images/maxresdefault.jpg");
+      background-image: url("./images/maxresdefault.jpg");
       background-size: 100% 100%;
       background-repeat: no-repeat;
       background-position: center center;
@@ -51,7 +51,7 @@
     }
 
     #prueba {
-      background-image: url("../images/Bandera_de_Andalucia.svg.png");
+      background-image: url("./images/Bandera_de_Andalucia.svg.png");
       background-size: 100% 100%;
       background-repeat: no-repeat;
       /*opacity: 0.7;*/
@@ -65,7 +65,7 @@
     <div class="col-2 dropdown">
       <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
         data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="../images/Bandera_de_Andalucia.svg.png" width="25%" height="25%" class="rounded-circle">
+        <img src="./images/Bandera_de_Andalucia.svg.png" width="25%" height="25%" class="rounded-circle">
       </a>
       <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
         <li><a class="dropdown-item" href="#">RÁNKING</a></li>
@@ -82,16 +82,16 @@
     <div class="col-4" id="prueba">
       <div class="text-center">
         <!--RUTA INDEX.PHP-->
-        <form action="./index.php" method="post">
+        <form action="./index.php?action=registrar" method="post">
           <div id="separador"></div>
           <label style="font-size: 30px;">INTRODUZCA SU MOTE</label>
           <div id="separador">
             <br>
             <input type="text" class="form-control"
-              style="background-color: lightgray; opacity: 65%; text-decoration: none;">
+              style="background-color: lightgray; opacity: 65%; text-decoration: none;" name="mote">
             <div id="separador">
               <br>
-              <a href="#" class="w-100 btn btn-lg" id="login">Entrar</a>
+              <input type="submit" class="w-100 btn btn-lg" id="login" value="Entrar">
             </div>
         </form>
       </div>

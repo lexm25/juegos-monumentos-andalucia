@@ -2,7 +2,7 @@
 
 define('CONTROLLERS_FOLDER', 'controllers/');
 define('DEFAULT_CONTROLLER', 'partidas');
-define('DEFAULT_ACTION', 'registrar');
+define('DEFAULT_ACTION', 'entrarPartida');
 
 $controller = DEFAULT_CONTROLLER;
 if (!empty($_GET['controller'])) {

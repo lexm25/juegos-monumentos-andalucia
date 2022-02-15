@@ -1,4 +1,7 @@
 <?php
+function entrarPartida(){
+    include_once "./views/index.html";
+}
 //La primera pantalla
 function registrar(){
     if (count($_POST) > 0) {
@@ -20,7 +23,7 @@ function registrar(){
 
 //La primera provincia
 function iniciar(){
-    include_once "./views/provincia1.php";
+    header("Location: ./views/provinciaBorrador.html");
 }
 
 //Antes de ir a la pantalla de resultado
