@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 02-02-2022 a las 20:20:25
--- Versión del servidor: 8.0.27-0ubuntu0.20.04.1
+-- Tiempo de generación: 15-02-2022 a las 13:38:59
+-- Versión del servidor: 8.0.28-0ubuntu0.20.04.3
 -- Versión de PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -38,6 +38,22 @@ CREATE TABLE `partidas` (
   `tiempo` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `preguntas`
+--
+
+CREATE TABLE `preguntas` (
+  `id` int NOT NULL,
+  `nombre` text NOT NULL,
+  `pregunta` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `respuestaCorrecta` text NOT NULL,
+  `respuesta1` text NOT NULL,
+  `respuesta2` text NOT NULL,
+  `respuesta3` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
 --
 -- Índices para tablas volcadas
 --
@@ -49,6 +65,12 @@ ALTER TABLE `partidas`
   ADD KEY `id` (`id`);
 
 --
+-- Indices de la tabla `preguntas`
+--
+ALTER TABLE `preguntas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -56,6 +78,12 @@ ALTER TABLE `partidas`
 -- AUTO_INCREMENT de la tabla `partidas`
 --
 ALTER TABLE `partidas`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `preguntas`
+--
+ALTER TABLE `preguntas`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
 
