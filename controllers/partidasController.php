@@ -39,7 +39,6 @@ function ranking(){
     $partidasRanking= getTodasPartidasNumeradas();
     echo $_SESSION["idPartida"] ."". json_encode($partidasRanking);
 }
-ranking();
 //La pantalla de resultado
 function resultado(){
     include_once "./models/partidasModel.php";
