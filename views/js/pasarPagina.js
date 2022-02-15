@@ -100,9 +100,13 @@ function mover(e) {
                 $("#munieco img").attr("src", "./../images/Crab/49839aa1b0feed02a3c759db5f8dee71.svg");
                 break;
         }
-
         var left = parseInt($("#munieco").css("left")) + 10;
         $("#munieco").css("left", left + "px");
+        controlarModalMonumento(left);
+       
+    }
+
+    function controlarModalMonumento(leftMunieco) {
         if (parseInt($("#munieco").css("left").split(/px/)[0]) >= parseInt($("#monumento").css("left").split(/px/)[0])) {
             if (modalShown == false) {
                 modalShown = true;
@@ -110,7 +114,7 @@ function mover(e) {
                 $("#modal").modal("show");
             }
         }
-        finalPantalla(left);
+        finalPantalla(leftMunieco);
     }
 
     //Si pulsa la tecla Space, salta
@@ -121,7 +125,6 @@ function mover(e) {
         }, 500, function () {
             if ($("#heart").length > 0) {
                 var munLeft= parseInt($("#munieco img").attr("width").split(/px/)[0]) + parseInt($("#munieco").css("left").split(/px/)[0]) ;
-                var heightMun= parseInt($("#munieco img").attr("height").split(/px/)[0]);
                 var heartLeft= parseInt($("#heart").css("left").split(/px/)[0]);
                 var heartwidth =parseInt($("#heart").attr("width").split(/px/)[0]) + heartLeft;
                 var munTop=parseInt($("#munieco").css("top").split(/px/)[0]);
@@ -149,7 +152,9 @@ function mover(e) {
         }).animate({
             top: "+=100" + "px",
             left: "+=30" + "px"
-        }, 500, function () { });
+        }, 500, function () { 
+            controlarModalMonumento(parseInt($("#munieco").css("left")));
+        });
 
 
 
