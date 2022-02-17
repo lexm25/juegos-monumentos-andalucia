@@ -14,7 +14,7 @@ $(document).ready(function () {
         var muniecoSeleccionado = [...$(this).parent().parent().find(".modal-body").children()].filter((m) => m.checked == true);
         if(muniecoSeleccionado.length!=0){
             $("#modalMunieco").modal("hide");
-            $("#munieco img").attr("src", $("#" + muniecoSeleccionado[0].id).next().children()[0].src);
+            $("#munieco").append("<img src='"+$("#" + muniecoSeleccionado[0].id).next().children()[0].src+"' width='200px' height='200px'>")
         }else{
             if(!$("#modalMunieco .modal-body").children().last().hasClass("text-danger")){
                 $("#modalMunieco .modal-body").append("<div class='text-danger py-3 h5'>¡¡¡¡Tienes que seleccionar un muñeco!!!!</div>")
