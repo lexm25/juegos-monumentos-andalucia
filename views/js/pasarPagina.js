@@ -8,7 +8,7 @@ sessionStorage.setItem("vida", 5);
 sessionStorage.setItem("puntos", 0);
 
 $(document).ready(function () {
-    $("#vidas").append("<i class='fas fa-heart'></i><i class='fal fa-heart'></i><i class='fal fa-heart'></i><i class='fal fa-heart'></i><i class='fal fa-heart'></i>")
+    $("#vidas").append("<i class='fas fa-heart'></i><i class='far fa-heart'></i><i class='far fa-heart'></i><i class='far fa-heart'></i><i class='far fa-heart'></i>")
     $("#modalMunieco").modal("show");
     $("#modalMuniecoEvento").click(function () {
         var muniecoSeleccionado = [...$(this).parent().parent().find(".modal-body").children()].filter((m) => m.checked == true);
@@ -169,8 +169,8 @@ function mover(e) {
                         $("#heart").remove();
                         var first=  $("#vidas").children().first();
                         for (let i = 1; i <= 5; i++) {
-                            if(first.hasClass("fal")){
-                                first.removeClass("fal").addClass("fas");
+                            if(first.hasClass("far")){
+                                first.removeClass("far").addClass("fas");
                                break;
                             }else{
                                 first=$("#vidas").children().eq(i);
