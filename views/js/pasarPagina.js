@@ -4,6 +4,7 @@ var s = 0;
 var m = 0;
 var provincia = 1;
 var modalShown = false;
+var objProvincia = [];
 sessionStorage.setItem("vida", 5);
 sessionStorage.setItem("puntos", 0);
 
@@ -31,6 +32,8 @@ $(document).ready(function () {
         } else {
             $("body").append("<audio src='./../images/Crab/83a9787d4cb6f3b7632b4ddfebf74367.wav' autoplay></audio>")
         }
+
+        $('#modal input[type="radio"]').change(controlarPreguntas);
 
 
         //Si cierra el modal y no ha acertado
@@ -144,6 +147,8 @@ function mover(e) {
                 modalShown = true;
                 $(document).off("keydown");
                 $("#modal").modal("show");
+
+                crearArbolPreguntas();
             }
         }
         finalPantalla(leftMunieco);
@@ -254,4 +259,57 @@ function finalPantalla(leftMunieco) {
     }
 }
 
+// Eddy función
+function controlarPreguntas(){
+    $(this).parent().children().attr("disabled",true);
+    var texto =$(this).next().text();
+    
+    if(texto == objProvincia[0].respCorrecta){
+        sessionStorage.setItem("puntos",sessionStorage.getItem("puntos") + 100);
 
+        $(this).addClass("btn-success");
+    }else{
+        $(this).addClass("btn-danger");
+        // buscar el label correcto y ponerlo a verde
+        // y después quitar 1 vida y llevarlo a gameOver un modal que pregunta si quieres repetir
+        // si dice que si lleva otra vez a la pantalla de seleccion de personajes
+        // si dice que no que lleve a la pantalla de INICIO ingresar mote
+    }
+
+}
+
+function crearArbolPreguntas() {
+    var datos = {
+        id: provincia
+    };
+
+    $.ajax({
+        url: '../index.php?controller=preguntas&action=damePregunta',
+        data: datos,
+        type: "get",
+    
+        success: function (response) {
+            
+            objProvincia = JSON.parse(response);
+            $("#modal img").attr("src", "./../images/" + objProvincia[0].img);
+            
+            $("#modal .modal-title").text(objProvincia[0].nombre);
+
+            var labels = [...$("#modal label")];
+            var posicionCorrecta = Math.floor(Math.random() * 3);
+            var contResp = 1;
+
+            for (let i = 0; i < labels.length; i++) {
+                
+                if(i == posicionCorrecta){
+                    $("#modal #danger-outlined-" + (i + 1)).next().text(objProvincia[0].respCorrecta);
+                } else{
+                    $("#modal #danger-outlined-" + (i + 1)).next().text(objProvincia[0]["respIncorrecta" + contResp]);
+                    contResp++;
+                    
+                }
+            }
+
+        }
+    });
+}
