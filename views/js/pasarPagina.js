@@ -8,7 +8,7 @@ sessionStorage.setItem("vida", 5);
 sessionStorage.setItem("puntos", 0);
 
 $(document).ready(function () {
-    $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i>")
+    $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='far fa-heart'></i>")
     $("#modalMunieco").modal("show");
     $("#modalMuniecoEvento").click(function () {
         var muniecoSeleccionado = [...$(this).parent().parent().find(".modal-body").children()].filter((m) => m.checked == true);
@@ -31,6 +31,7 @@ $(document).ready(function () {
         } else {
             $("body").append("<audio src='./../images/Crab/83a9787d4cb6f3b7632b4ddfebf74367.wav' autoplay></audio>")
         }
+
 
         //Si cierra el modal y no ha acertado
         /*  var last=  $("#vidas").last();
