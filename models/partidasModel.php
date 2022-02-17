@@ -11,7 +11,7 @@ function getConnection()
 function getPartidas()
 {
    $con = getConnection();
-   $result = $con->query('SELECT * FROM `partidas` ORDER BY `puntos` DESC , `vida` DESC, tiempo ASC limit 5');
+   $result = $con->query('SELECT * FROM `partidas` ORDER BY `tiempo` ASC , `puntos` DESC, vida DESC limit 5');
    $filas = [];
    while ($fila = $result->fetch()) {
       $filas[] = $fila;
@@ -23,7 +23,7 @@ function getPartidas()
 function getTodasPartidasNumeradas()
 {
    $con = getConnection();
-   $result = $con->query('SELECT @rownum:=@rownum+1 AS rownum, partidas.* FROM (SELECT @rownum:=0) r, partidas ORDER BY `puntos` DESC , `vida` DESC, tiempo ASC;');
+   $result = $con->query('SELECT @rownum:=@rownum+1 AS rownum, partidas.* FROM (SELECT @rownum:=0) r, partidas ORDER BY `tiempo` ASC , `puntos` DESC, vida DESC;');
    $filas = [];
    while ($fila = $result->fetch()) {
       $filas[] = $fila;

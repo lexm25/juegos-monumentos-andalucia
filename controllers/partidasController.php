@@ -14,7 +14,6 @@ function registrar(){
         }
         include_once "./models/partidasModel.php";
         $idPartida = setPartida(seguro($_POST["mote"]));
-        session_start();
         header("Location: ./index.php?controller=partidas&action=iniciar");
         
     } else {
@@ -44,6 +43,10 @@ function resultado(){
     include_once "./models/partidasModel.php";
     $partidas = getPartidas();
     include_once "./views/resultado.php";
+
+}
+
+function borrarUltimaPartida(){
 
 }
 
