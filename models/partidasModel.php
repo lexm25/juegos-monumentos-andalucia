@@ -51,27 +51,3 @@ function setPartida($mote,$puntos,$vida,$tiempo){
   return $id;
 }
 
-
-/*function updatePartida($puntos,$vida,$tiempo)
-{
-    $retorno = false;
-    try {
-        $con = getConnection();
-        $id = count(getPartidas());
-        $sql = $con->prepare("UPDATE partidas  set puntos=:puntos, vida=:vida, tiempo=:tiempo where id=:id;");
-        $sql->bindParam(":id", $id);
-        $sql->bindParam(":puntos", $puntos);
-        $sql->bindParam(":vida", $vida);
-        $sql->bindParam(":tiempo", $tiempo);
-        $sql->execute();
-        if ($sql->rowCount() > 0) {
-            $retorno = true;
-        }
-    } catch (PDOException $e) {
-        echo $e;
-    }
-    $con = null;
-    return $retorno;
-}
-*/
-
