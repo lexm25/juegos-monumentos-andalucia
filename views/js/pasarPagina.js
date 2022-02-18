@@ -164,7 +164,7 @@ function mover(e) {
     }
 
     //Si pulsa la tecla Space, salta
-    if (e.keyCode == 32) {
+    if (e.keyCode == 32 || e.keyCode == 38 ) {
         $("#munieco").animate({
             top: "-=100" + "px",
             left: "+=30" + "px"

@@ -1,0 +1,10 @@
+.btn-outline-info:hover{
+    background: gray;
+    border-color: gray
+}
+.btn-outline-info{
+    border-color: gray;
+}
+#modalMuniecoEvento{
+    color: black;
+}
