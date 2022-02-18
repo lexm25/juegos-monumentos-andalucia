@@ -53,7 +53,7 @@
         
     <div class="col-12 p-4">
         <div class="col-12 text-center bg-success p-2" id="modalResultado">
-            <h5 class="text-light">Posiçión en el Ranking</h5>
+            <h5 class="text-light">Posición en el Ranking</h5>
             <div>
                 <p id="mostrarPosicion" class="text-light"></p>
             </div>
