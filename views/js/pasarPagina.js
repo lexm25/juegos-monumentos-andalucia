@@ -3,6 +3,7 @@
 var s = 0;
 var m = 0;
 var provincia = 1;
+sessionStorage.setItem('idProvincia', provincia);
 var modalShown = false;
 var objProvincia = [];
 sessionStorage.setItem("vida", 5);
@@ -264,9 +265,9 @@ function controlarPreguntas(){
     $(this).parent().children().attr("disabled",true);
     var texto =$(this).next().text();
     
-    if(texto == objProvincia[0].respCorrecta){
+    if(texto == objProvincia[0].respuestaCorrecta){
         sessionStorage.setItem("puntos",sessionStorage.getItem("puntos") + 100);
-
+        $(this).removeClass("btn-outline-info");
         $(this).addClass("btn-success");
     }else{
         $(this).addClass("btn-danger");
@@ -293,7 +294,7 @@ function crearArbolPreguntas() {
             objProvincia = JSON.parse(response);
             $("#modal img").attr("src", "./../images/" + objProvincia[0].img);
             
-            $("#modal .modal-title").text(objProvincia[0].nombre);
+            $("#modal .modal-title").text(objProvincia[0].pregunta);
 
             var labels = [...$("#modal label")];
             var posicionCorrecta = Math.floor(Math.random() * 3);
@@ -302,9 +303,9 @@ function crearArbolPreguntas() {
             for (let i = 0; i < labels.length; i++) {
                 
                 if(i == posicionCorrecta){
-                    $("#modal #danger-outlined-" + (i + 1)).next().text(objProvincia[0].respCorrecta);
+                    $("#modal #danger-outlined-" + (i + 1)).next().text(objProvincia[0].respuestaCorrecta);
                 } else{
-                    $("#modal #danger-outlined-" + (i + 1)).next().text(objProvincia[0]["respIncorrecta" + contResp]);
+                    $("#modal #danger-outlined-" + (i + 1)).next().text(objProvincia[0]["respuesta" + contResp]);
                     contResp++;
                     
                 }
