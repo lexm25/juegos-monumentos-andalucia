@@ -42,3 +42,8 @@
     background-repeat: no-repeat;
     /*opacity: 0.7;*/
   }
+  #mote{
+    background-color: gray; 
+    opacity: 80%; 
+    text-decoration: none;
+  }
