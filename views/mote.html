@@ -8,55 +8,10 @@
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.88.1">
   <title>Headers · Bootstrap v5.1</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-
-    .margin {
-      margin-top: 200px;
-    }
-
-    body {
-      background-image: url("./images/maxresdefault.jpg");
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-attachment: fixed;
-    }
-
-    #boton {
-      margin-top: 10px;
-    }
-
-    #espaciador {
-      margin-top: 200px;
-    }
-
-    #separador {
-      margin: 30px;
-    }
-
-    #prueba {
-      background-image: url("./images/Bandera_de_Andalucia.svg.png");
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      /*opacity: 0.7;*/
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="./style/mote.css>
+  
 </head>
 
 <header class="p-3">
@@ -82,7 +37,7 @@
     <div class="col-4" id="prueba">
       <div class="text-center">
         <!--RUTA INDEX.PHP-->
-        <form action="./index.php?action=registrar" method="post">
+        <form>
           <div id="separador"></div>
           <label style="font-size: 30px;">INTRODUZCA SU MOTE</label>
           <div id="separador">
@@ -91,7 +46,7 @@
               style="background-color: lightgray; opacity: 65%; text-decoration: none;" name="mote">
             <div id="separador">
               <br>
-              <input type="submit" class="w-100 btn btn-lg" id="login" value="Entrar">
+              <input type="button" class="w-100 btn btn-lg" id="login" value="Entrar">
             </div>
         </form>
       </div>
