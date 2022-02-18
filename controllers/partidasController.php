@@ -17,7 +17,7 @@ function registrar(){
         header("Location: ./index.php?controller=partidas&action=iniciar");
         
     } else {
-        include_once "./views/registro.php";
+        include_once "./views/mote.html";
     }
 }
 
