@@ -15,7 +15,7 @@ $(document).ready(function () {
         if($("#mote").val()!=0){
             window.location.replace("./views/provinciaBorrador.html");
         }else{
-            //$("#mote").parent(). 
+            $("#mote").parent().parent().parent().append("<div class='text-danger'>Introduce un nombre porfavor</div>"); 
         }
     })
     $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='far fa-heart'></i>")
