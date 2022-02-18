@@ -20,10 +20,6 @@
     <nav class="bg-success">
         <ul class="nav nav-pills justify-content-center p-3">
             <li class="nav-item"> <a class="nav-link text-light" href="index.php?controller=partidas&action=registrar">Nueva Partida</a> </li>
-            <li class="nav-item p-2 text-warning font-weight-bolder">
-                <p>Er juego los Monumentó d'Andalusia</p>
-            </li>
-            <li class="nav-item"> <a class="nav-link active bg-light text-success" aria-current="page" href="#">Resultado Partida</a> </li>
         </ul>
     </nav>
     <div class="col-12 p-4">
