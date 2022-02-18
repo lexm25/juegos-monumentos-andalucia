@@ -1,6 +1,6 @@
 <?php
 function entrarPartida(){
-    include_once "./views/index.html";
+    include_once "./views/mote.html";
 }
 //La primera pantalla
 function registrar(){
@@ -34,9 +34,9 @@ function actualizar(){
 
 //El ranking de las partidas numeradas
 function ranking(){
-    include_once "../models/partidasModel.php";
+    include_once "./models/partidasModel.php";
     $partidasRanking= getTodasPartidasNumeradas();
-    echo $_SESSION["idPartida"] ."". json_encode($partidasRanking);
+    echo $_POST["idPartida"] ."". json_encode($partidasRanking);
 }
 //La pantalla de resultado
 function resultado(){
@@ -49,5 +49,3 @@ function resultado(){
 function borrarUltimaPartida(){
 
 }
-
-
