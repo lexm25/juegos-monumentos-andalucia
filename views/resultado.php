@@ -15,7 +15,7 @@
 <body>
     <nav class="bg-success">
         <ul class="nav nav-pills justify-content-center p-3">
-            <li class="nav-item"> <a class="nav-link text-light" href="index.php?controller=partidas&action=registrar">Nueva Partida</a> </li>
+            <li class="nav-item"> <a class="nav-link text-light" href="index.php?controller=partidas&action=entrarPartida">Nueva Partida</a> </li>
         </ul>
     </nav>
     <div class="col-12 p-4">
