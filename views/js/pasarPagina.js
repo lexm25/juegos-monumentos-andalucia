@@ -10,6 +10,10 @@ sessionStorage.setItem("vida", 5);
 sessionStorage.setItem("puntos", 0);
 
 $(document).ready(function () {
+    $("#login").click(function () {
+        sessionStorage.setItem("mote", $("#mote").val());
+        window.location.replace("./views/provinciaBorrador.html");
+    })
     $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='far fa-heart'></i>")
     $("#modalMunieco").modal("show");
     $("#modalMuniecoEvento").click(function () {
@@ -240,6 +244,7 @@ function finalPantalla(leftMunieco) {
                 mBD = "0" + m;
             }
             var datos = {
+                mote: sessionStorage.getItem("mote"),
                 vida: sessionStorage.getItem("vida"),
                 puntos: sessionStorage.getItem("puntos"),
                 tiempo: "00:" + $("#cronometro").text(),
@@ -247,7 +252,7 @@ function finalPantalla(leftMunieco) {
 
                 $.ajax({
                     data: datos,
-                    url: "./../index.php?action=actualizar",
+                    url: "./../index.php?action=registrar",
                     type: "post",
                     success: function () {
                         //Vamos a la página de resultado
