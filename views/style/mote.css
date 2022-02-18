@@ -1,0 +1,44 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  .margin {
+    margin-top: 200px;
+  }
+
+  body {
+    background-image: url("../../images/maxresdefault.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+
+  #boton {
+    margin-top: 10px;
+  }
+
+  #espaciador {
+    margin-top: 200px;
+  }
+
+  #separador {
+    margin: 30px;
+  }
+
+  #prueba {
+    background-image: url("../../images/Bandera_de_Andalucia.svg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    /*opacity: 0.7;*/
+  }
