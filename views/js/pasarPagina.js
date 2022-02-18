@@ -67,6 +67,9 @@ $(document).ready(function () {
     //Si se cierra el modal, puede  moverse
     $(".botonCerrar").on("click", function () {
         $(document).on("keydown", mover);
+        
+        $("#modal modal-body text-center input.btn-check").attr("disabled",false);
+        $("#modal modal-body label.btn-outline-success").removeClass("btn-outline-success").addClass("btn-outline-info");
     })
     //Se establece el valor inicial del cronómetro
     $("#cronometro").text("00:00");
@@ -278,6 +281,8 @@ function controlarPreguntas(){
         sessionStorage.setItem("puntos",sessionStorage.getItem("puntos") + 100);
         $(this).attr("disabled",false);
         $(this).next().removeClass("btn-outline-info").addClass("btn-outline-success");
+
+        
         
     }else{
         $(this).addClass("btn-danger");
