@@ -63,7 +63,6 @@
         <div class="col-12 text-center bg-success p-2" id="modalResultado">
             <h5 class="text-light">Posisión en er Rankí</h5>
             <div>
-                <?php  ?>
                 <p id="mostrarPosicion" class="text-light"></p>
             </div>
         </div>
