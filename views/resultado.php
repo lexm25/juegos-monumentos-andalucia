@@ -31,7 +31,7 @@
                         <h5 class="modal-title">Shampion der juego</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Enhoragüena <?php echo $partidas[0]['mote']; ?> as ganao <?php echo $partidas[0]['puntos']; ?> puntos tas ganao una Sigala y un jamón rosa imbisible questamó en krizí</p>
+                        <p>Enoraguena <?php echo $partidas[0]['mote']; ?> âh ganao <?php echo $partidas[0]['puntos']; ?> puntô te âh ganao una Çigala y un hamón roça imbiçible que êttamô en criçî</p>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
         
     <div class="col-12 p-4">
         <div class="col-12 text-center bg-success p-2" id="modalResultado">
-            <h5 class="text-light">Posisión en er Rankí</h5>
+            <h5 class="text-light">Posiçión en el Ranking</h5>
             <div>
                 <p id="mostrarPosicion" class="text-light"></p>
             </div>

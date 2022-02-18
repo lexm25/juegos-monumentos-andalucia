@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // $('#modalGanador').modal('show');
+    $('#modalGanador').modal('show');
 
     $.ajax({
         // data:  parametros,
@@ -10,7 +10,7 @@ $(document).ready(function() {
             response = JSON.stringify(response);
             response = JSON.parse(response);
             if(response.id==response.idPartida) {
-                $("#mostrarPosicion").html("Enhoragüena " + response.mote + " as ganao " + response.puntos + " puntos tas ganao una Sigala y un jamón rosa imbisible questamó en krizí; la prozima vé pueé aserlo mejó; ke tus compañeró tansakando mejoré puntuasioné ke tú. Está en la posisión " + response.rownum + " y todabia pueé zubí má zakando mejó puntuasión la prozima vé zige jugando pa podé zubí en er rankí.");
+                $("#mostrarPosicion").html("Enoraguena " + response.mote + " âh ganao " + response.puntos + " puntô te âh ganao una Çigala y un hamón roça imbiçible que êttamô en criçî; la prôççima bêh puedê açêl-lo mehôh; que tû compañero êttan çacando mehorê puntuaçionê que tú. Êttâh en la poçiçión " + response.rownum + " y todabia puedê çubîh mâh çacando mehôh puntuaçión la prôççima bêh çige hugando pa podêh çubîh en el ranking.");
             }
         }
     });
