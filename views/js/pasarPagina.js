@@ -12,11 +12,7 @@ sessionStorage.setItem("puntos", 0);
 $(document).ready(function () {
     $("#login").click(function () {
         sessionStorage.setItem("mote", $("#mote").val());
-        if($("#mote").val()!=0){
-            window.location.replace("./views/provinciaBorrador.html");
-        }else{
-            $("#mote").parent().parent().parent().append("<div class='text-danger'>Introduce un nombre porfavor</div>"); 
-        }
+        window.location.replace("./views/provinciaBorrador.html");
     })
     $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='far fa-heart'></i>")
     $("#modalMunieco").modal("show");
@@ -70,6 +66,7 @@ $(document).ready(function () {
         $('input[name="options-outlined"]').prop('disabled', false);
         $(" #modal label.btn-outline-success").prev().prop("checked", false);
         $(" #modal label.btn-outline-success").removeClass("btn-outline-success").addClass("btn-outline-info");
+        
     })
     //Se establece el valor inicial del cronómetro
     $("#cronometro").text("00:00");
