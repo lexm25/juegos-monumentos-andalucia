@@ -12,7 +12,11 @@ sessionStorage.setItem("puntos", 0);
 $(document).ready(function () {
     $("#login").click(function () {
         sessionStorage.setItem("mote", $("#mote").val());
-        window.location.replace("./views/provinciaBorrador.html");
+        if($("#mote").val()!=0){
+            window.location.replace("./views/provinciaBorrador.html");
+        }else{
+            $("#mote").parent().parent().parent().append("<div class='text-danger'>Introduce un nombre porfavor</div>"); 
+        }
     })
     $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='far fa-heart'></i>")
     $("#modalMunieco").modal("show");
