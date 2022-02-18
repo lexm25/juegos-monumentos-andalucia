@@ -2,9 +2,8 @@
 function entrarPartida(){
     include_once "./views/mote.html";
 }
-//La primera pantalla
+//Guardamos los datos dela partida en la base de datos
 function registrar(){
-    if (count($_POST) > 0) {
         function seguro($valor)
         {
             $valor = strip_tags($valor);
@@ -13,24 +12,8 @@ function registrar(){
             return $valor;
         }
         include_once "./models/partidasModel.php";
-        $idPartida = setPartida(seguro($_POST["mote"]));
-        header("Location: ./index.php?controller=partidas&action=iniciar");
-        
-    } else {
-        include_once "./views/mote.html";
+        setPartida(seguro($_POST["mote"]), $_POST["puntos"], $_POST["vida"], $_POST["tiempo"]);
     }
-}
-
-//La primera provincia
-function iniciar(){
-    header("Location: ./views/provinciaBorrador.html");
-}
-
-//Antes de ir a la pantalla de resultado
-function actualizar(){
-    include_once "./models/partidasModel.php";
-    $cumplido= updatePartida(intval($_POST["puntos"]), intval($_POST["vida"]), $_POST["tiempo"]);
-}
 
 //El ranking de las partidas numeradas
 function ranking(){
@@ -43,9 +26,4 @@ function resultado(){
     include_once "./models/partidasModel.php";
     $partidas = getPartidas();
     include_once "./views/resultado.php";
-
-}
-
-function borrarUltimaPartida(){
-
 }

@@ -15,7 +15,7 @@
 <body>
     <nav class="bg-success">
         <ul class="nav nav-pills justify-content-center p-3">
-            <li class="nav-item"> <a class="nav-link text-light" href="index.php?controller=partidas&action=registrar">Nueva Partida</a> </li>
+            <li class="nav-item"> <a class="nav-link text-light" href="index.php?controller=partidas&action=entrarPartida">Nueva Partida</a> </li>
         </ul>
     </nav>
     <div class="col-12 p-4">
@@ -24,10 +24,10 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Shampion der juego</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title">Xampion der huego</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Enhoragüena <?php echo $partidas[0]['mote']; ?> as ganao <?php echo $partidas[0]['puntos']; ?> puntos tas ganao una Sigala y un jamón rosa imbisible questamó en krizí</p>
+                        <p>Enoraguena <?php echo $partidas[0]['mote']; ?> âh ganao <?php echo $partidas[0]['puntos']; ?> puntô te âh ganao una Çigala y un hamón roça imbiçible que êttamô en criçî</p>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
         
     <div class="col-12 p-4">
         <div class="col-12 text-center bg-success p-2" id="modalResultado">
-            <h5 class="text-light">Posisión en er Rankí</h5>
+            <h5 class="text-light">Posiçión en el Ranking</h5>
             <div>
                 <p id="mostrarPosicion" class="text-light"></p>
             </div>
