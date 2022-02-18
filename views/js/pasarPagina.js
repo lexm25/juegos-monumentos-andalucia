@@ -272,8 +272,9 @@ function controlarPreguntas(){
     
     if(texto == objProvincia[0].respuestaCorrecta){
         sessionStorage.setItem("puntos",sessionStorage.getItem("puntos") + 100);
-        $(this).removeClass("btn-outline-info");
-        $(this).addClass("btn-success");
+        $(this).attr("disabled",false);
+        $(this).next().removeClass("btn-outline-info").addClass("btn-outline-success");
+        
     }else{
         $(this).addClass("btn-danger");
         // buscar el label correcto y ponerlo a verde

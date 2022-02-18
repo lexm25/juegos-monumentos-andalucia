@@ -12,8 +12,7 @@ function registrar(){
             return $valor;
         }
         include_once "./models/partidasModel.php";
-        $idPartida = setPartida(seguro($_POST["mote"]) , $_POST["puntos"], $_POST["vida"], $_POST["tiempo"]);        
-}
+    }
 
 //El ranking de las partidas numeradas
 function ranking(){
