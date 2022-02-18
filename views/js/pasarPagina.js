@@ -66,7 +66,7 @@ $(document).ready(function () {
         $('input[name="options-outlined"]').prop('disabled', false);
         $(" #modal label.btn-outline-success").prev().prop("checked", false);
         $(" #modal label.btn-outline-success").removeClass("btn-outline-success").addClass("btn-outline-info");
-        
+
     })
     //Se establece el valor inicial del cronómetro
     $("#cronometro").text("00:00");
