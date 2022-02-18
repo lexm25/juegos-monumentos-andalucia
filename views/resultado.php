@@ -14,7 +14,6 @@
             background-image: url(./images/maxresdefault.jpg);
         }
     </style>
-    <script src="./views/js/resultado.js"></script>
 </head>
 
 <body>
@@ -69,6 +68,7 @@
             </div>
         </div>
     </div>
+    <script src="./views/js/resultado.js"></script>
 
 </body>
 
