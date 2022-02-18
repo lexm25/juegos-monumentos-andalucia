@@ -34,9 +34,9 @@ function actualizar(){
 
 //El ranking de las partidas numeradas
 function ranking(){
-    include_once "../models/partidasModel.php";
+    include_once "./models/partidasModel.php";
     $partidasRanking= getTodasPartidasNumeradas();
-    echo $_SESSION["idPartida"] ."". json_encode($partidasRanking);
+    echo $_POST["idPartida"] ."". json_encode($partidasRanking);
 }
 //La pantalla de resultado
 function resultado(){

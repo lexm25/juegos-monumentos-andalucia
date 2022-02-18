@@ -3,6 +3,7 @@
 var s = 0;
 var m = 0;
 var provincia = 1;
+sessionStorage.setItem('idProvincia', provincia);
 var modalShown = false;
 var objProvincia = [];
 sessionStorage.setItem("vida", 5);
