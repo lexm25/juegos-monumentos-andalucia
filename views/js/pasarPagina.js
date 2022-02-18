@@ -2,6 +2,7 @@
 // la provincia a uno y el modal a false que no se ha mostrado aún
 var s = 0;
 var m = 0;
+var segundosSalto = 0;
 var provincia = 1;
 sessionStorage.setItem('idProvincia', provincia);
 var modalShown = false;
@@ -9,24 +10,25 @@ var objProvincia = [];
 sessionStorage.setItem("vida", 5);
 sessionStorage.setItem("puntos", 0);
 
-$(document).ready(function () {
+$(document).ready(function () { 
+   
     $("#login").click(function () {
         sessionStorage.setItem("mote", $("#mote").val());
-        if($("#mote").val()!=0){
+        if ($("#mote").val() != 0) {
             window.location.replace("./views/provinciaBorrador.html");
-        }else{
-            $("#mote").parent().parent().parent().append("<div class='text-danger'>Introduce un nombre porfavor</div>"); 
+        } else {
+            $("#mote").parent().parent().parent().append("<div class='text-danger'>Introduce un nombre porfavor</div>");
         }
     })
     $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='far fa-heart'></i>")
     $("#modalMunieco").modal("show");
     $("#modalMuniecoEvento").click(function () {
         var muniecoSeleccionado = [...$(this).parent().parent().find(".modal-body").children()].filter((m) => m.checked == true);
-        if(muniecoSeleccionado.length!=0){
+        if (muniecoSeleccionado.length != 0) {
             $("#modalMunieco").modal("hide");
-            $("#munieco").append("<img src='"+$("#" + muniecoSeleccionado[0].id).next().children()[0].src+"' width='200px' height='200px'>")
-        }else{
-            if(!$("#modalMunieco .modal-body").children().last().hasClass("text-danger")){
+            $("#munieco").append("<img src='" + $("#" + muniecoSeleccionado[0].id).next().children()[0].src + "' width='200px' height='200px'>")
+        } else {
+            if (!$("#modalMunieco .modal-body").children().last().hasClass("text-danger")) {
                 $("#modalMunieco .modal-body").append("<div class='text-danger py-3 h5'>¡¡¡¡Tienes que seleccionar un muñeco!!!!</div>")
             }
         }
@@ -168,57 +170,73 @@ function mover(e) {
     }
 
     //Si pulsa la tecla Space, salta
-    if (e.keyCode == 32 || e.keyCode == 38 ) {
-        $("#munieco").animate({
-            top: "-=100" + "px",
-            left: "+=30" + "px"
-        }, 500, function () {
-            if ($("#heart").length > 0) {
-                var munLeft = parseInt($("#munieco img").attr("width").split(/px/)[0]) + parseInt($("#munieco").css("left").split(/px/)[0]);
-                var heartLeft = parseInt($("#heart").css("left").split(/px/)[0]);
-                var heartwidth = parseInt($("#heart").attr("width").split(/px/)[0]) + heartLeft;
-                var munTop = parseInt($("#munieco").css("top").split(/px/)[0]);
-                var heartTop = parseInt($("#heart").css("top").split(/px/)[0]);
+    if (e.keyCode == 32 || e.keyCode == 38) {
+        //Para que no pueda saltar muchas veces en menos de un segundo
+        if (((s + (m * 60)) - 1) >= segundosSalto) {
+            segundosSalto = (m * 60) + s;
 
-                //Si se come el corazón
-                if (munLeft >= heartLeft && munLeft <= (heartwidth + 100) && munTop >= heartTop) {
-                    if (parseInt(sessionStorage.getItem("vida")) < 6) {
-                        sessionStorage.setItem("vida", parseInt(sessionStorage.getItem("vida")) + 1);
-                        $("body").append("<audio src='./../images/heart.mp3' autoplay></audio>");
+            $("#munieco").animate({
+                top: "-=100" + "px",
+                left: "+=30" + "px"
+            }, 500, function () {
+                if ($("#heart").length > 0) {
+                    var munLeft = parseInt($("#munieco img").attr("width").split(/px/)[0]) + parseInt($("#munieco").css("left").split(/px/)[0]);
+                    var heartLeft = parseInt($("#heart").css("left").split(/px/)[0]);
+                    var heartwidth = parseInt($("#heart").attr("width").split(/px/)[0]) + heartLeft;
+                    var munTop = parseInt($("#munieco").css("top").split(/px/)[0]);
+                    var heartTop = parseInt($("#heart").css("top").split(/px/)[0]);
 
-                        $("#heart").animate({
-                            width: "+=20" + "px",
-                            height: "+=20" + "px",
-                        }, 500, function () { }).animate({
-                            left: ($(window).width()*3)/4,
-                            top: "20",
-                            width: "0" + "px",
-                            height: "0" + "px",
-                        }, 500, function () {
-                            $("#heart").remove();
-                            var first = $("#vidas").children().first();
-                            for (let i = 1; i <= 5; i++) {
-                                if (first.hasClass("far")) {
-                                    first.removeClass("far").addClass("fas");
-                                    break;
-                                } else {
-                                    first = $("#vidas").children().eq(i);
+                    //Si se come el corazón
+                    if (munLeft >= heartLeft && munLeft <= (heartwidth + 100) && munTop >= heartTop) {
+                        if (parseInt(sessionStorage.getItem("vida")) < 5) {
+                            sessionStorage.setItem("vida", parseInt(sessionStorage.getItem("vida")) + 1);
+                            $("body").append("<audio src='./../images/heart.mp3' autoplay></audio>");
+
+                            $("#heart").animate({
+                                width: "+=20" + "px",
+                                height: "+=20" + "px",
+                            }, 500, function () { }).animate({
+                                left: ($(window).width() * 3) / 4,
+                                top: "20",
+                                width: "0" + "px",
+                                height: "0" + "px",
+                            }, 500, function () {
+                                $("#heart").remove();
+                                var first = $("#vidas").children().first();
+                                for (let i = 1; i <= 5; i++) {
+                                    if (first.hasClass("far")) {
+                                        first.removeClass("far").addClass("fas");
+                                        break;
+                                    } else {
+                                        first = $("#vidas").children().eq(i);
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        } else {
+                            //Caida de piedra cuando falla
+                            /*$("#piedra").fadeIn();
+                            $("#piedra").css("left", parseInt($("#munieco").css("left").split(/px/)[0])+40)
+                            $("#piedra").animate({
+                                top: "+=350" + "px"
+                            }, 500, function () { });
+                            $("body").append("<audio src='./../images/piedra.mp3' autoplay></audio>")*/
+
+                            //    $("#nube1").fadeIn();
+                            //    $("#nube1").css("top" , "10px")
+                        }
+
                     }
-
                 }
-            }
-        }).animate({
-            top: "+=100" + "px",
-            left: "+=30" + "px"
-        }, 500, function () {
-            controlarModalMonumento(parseInt($("#munieco").css("left")));
-        });
+            }).animate({
+                top: "+=100" + "px",
+                left: "+=30" + "px"
+            }, 500, function () {
+                controlarModalMonumento(parseInt($("#munieco").css("left")));
+            });
 
 
 
+        }
     }
 }
 
@@ -258,34 +276,44 @@ function finalPantalla(leftMunieco) {
                 tiempo: "00:" + $("#cronometro").text(),
             };
 
-                $.ajax({
-                    data: datos,
-                    url: "./../index.php?action=registrar",
-                    type: "post",
-                    success: function () {
-                        //Vamos a la página de resultado
-                        window.location.replace("../index.php?action=resultado");
-                    }
-                });
-           
+            $.ajax({
+                data: datos,
+                url: "./../index.php?action=registrar",
+                type: "post",
+                success: function () {
+                    //Vamos a la página de resultado
+                    window.location.replace("../index.php?action=resultado");
+                }
+            });
+
+        }
+
+        //sitios que aparece el corazón
+        if (provincia == 2 || provincia == 4 || provincia == 6) {
+            $("#heart").toggleClass("d-none");
+            if (provincia == 4) {
+                $("#heart").css("left", "1000px");
+            }
+        } else {
+            $("#heart").toggleClass("d-none");
         }
 
     }
 }
 
 // Eddy función
-function controlarPreguntas(){
-    $(this).parent().children().attr("disabled",true);
-    var texto =$(this).next().text();
-    
-    if(texto == objProvincia[0].respuestaCorrecta){
-        sessionStorage.setItem("puntos",sessionStorage.getItem("puntos") + 100);
-        $(this).attr("disabled",false);
+function controlarPreguntas() {
+    $(this).parent().children().attr("disabled", true);
+    var texto = $(this).next().text();
+
+    if (texto == objProvincia[0].respuestaCorrecta) {
+        sessionStorage.setItem("puntos", sessionStorage.getItem("puntos") + 100);
+        $(this).attr("disabled", false);
         $(this).next().removeClass("btn-outline-info").addClass("btn-outline-success");
 
-        
-        
-    }else{
+
+
+    } else {
         $(this).addClass("btn-danger");
         // buscar el label correcto y ponerlo a verde
         // y después quitar 1 vida y llevarlo a gameOver un modal que pregunta si quieres repetir
@@ -304,12 +332,12 @@ function crearArbolPreguntas() {
         url: '../index.php?controller=preguntas&action=damePregunta',
         data: datos,
         type: "get",
-    
+
         success: function (response) {
-            
+
             objProvincia = JSON.parse(response);
             $("#modal img").attr("src", "./../images/" + objProvincia[0].img);
-            
+
             $("#modal .modal-title").text(objProvincia[0].pregunta);
 
             var labels = [...$("#modal label")];
@@ -317,13 +345,13 @@ function crearArbolPreguntas() {
             var contResp = 1;
 
             for (let i = 0; i < labels.length; i++) {
-                
-                if(i == posicionCorrecta){
+
+                if (i == posicionCorrecta) {
                     $("#modal #danger-outlined-" + (i + 1)).next().text(objProvincia[0].respuestaCorrecta);
-                } else{
+                } else {
                     $("#modal #danger-outlined-" + (i + 1)).next().text(objProvincia[0]["respuesta" + contResp]);
                     contResp++;
-                    
+
                 }
             }
 
