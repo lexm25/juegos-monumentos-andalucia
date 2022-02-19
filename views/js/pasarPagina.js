@@ -188,7 +188,7 @@ function mover(e) {
 
                     //Si se come el corazón
                     if (munLeft >= heartLeft && munLeft <= (heartwidth + 100) && munTop >= heartTop) {
-                        if (parseInt(sessionStorage.getItem("vida")) < 5) {
+                        if (parseInt(sessionStorage.getItem("vida")) < 6) {
                             sessionStorage.setItem("vida", parseInt(sessionStorage.getItem("vida")) + 1);
                             $("body").append("<audio src='./../images/heart.mp3' autoplay></audio>");
 
