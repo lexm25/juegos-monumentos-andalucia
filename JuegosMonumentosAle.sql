@@ -19,10 +19,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `JuegosMonumentos`
+-- Base de datos: `JuegoMonumentos`
 --
-CREATE DATABASE IF NOT EXISTS `JuegosMonumentos` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `JuegosMonumentos`;
+CREATE DATABASE IF NOT EXISTS `JuegoMonumentos` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `JuegoMonumentos`;
 
 -- --------------------------------------------------------
 
@@ -63,10 +63,13 @@ CREATE TABLE `preguntas` (
 
 INSERT INTO `preguntas` (`id`, `idProvincia`, `nombre`, `pregunta`, `respuestaCorrecta`, `respuesta1`, `respuesta2`, `respuesta3`, `descripcion`, `img`) VALUES
 (1, 1, 'Sevilla', '¿En qué año se comenzó a edificar la Giralda?', '1000', '1234', '1593', '1492', '5t5', 'giralda-bovedas.jpg'),
-(2, 2, 'Córdoba', '¿Qué nombre tuvo La Mezquita de Córdoba tras ser construida una catedral cristiana en su interior?', 'Asunción de Nuestra Señora', 'Nuestra Señora de Badaín', 'Catedral de San Isidro', 'Nuestra Señora de los Milagros', '', ''),
-(3, 3, 'Granada', '¿Es la Alhambra el monumento más visitado de España?', 'Sí', 'No, es la Sagrada Familia de Barcelona', 'No, es la Catedral de Santiago de Compostela', 'No, es el Teatro Romano de Mérida', '', ''),
-(4, 4, 'Huelva', '¿Por qué recibe el nombre de Muelle del Tinto el puente onubense?', 'Porque está situado encima del Río Tinto', 'Porque descargaban los trenes de la Rio Tinto Company Limited procedentes de las minas de cobre del norte de la provincia.', 'Porque allí se festejaba una fiesta tradicional antigua, en la cuál se bebía el tinto de la cosecha del año', 'Reciba tal nombre ya que la ciudad era famosa por su vino tinto especial llamado Tinto Onubo', '', ''),
-(5, 5, 'Málaga', '¿En qué año fue construida la fortaleza La Alcazaba?', 'Entre 1057 y 1063', 'Entre 1042 y 1065', 'Entre 1034 y 1048', 'Entre 1068 y 1074', '', '');
+(2, 2, 'Córdoba', '¿Qué nombre tuvo La Mezquita de Córdoba tras ser construida una catedral cristiana en su interior?', 'Asunción de Nuestra Señora', 'Nuestra Señora de Badaín', 'Catedral de San Isidro', 'Nuestra Señora de los Milagros', '', 'mezquita-cordoba.jpg'),
+(3, 3, 'Granada', '¿Es la Alhambra el monumento más visitado de España?', 'Sí', 'No, es la Sagrada Familia de Barcelona', 'No, es la Catedral de Santiago de Compostela', 'No, es el Teatro Romano de Mérida', '', 'alhambra.jpg'),
+(4, 4, 'Huelva', '¿Por qué recibe el nombre de Muelle del Tinto el puente onubense?', 'Porque está situado encima del Río Tinto', 'Porque descargaban los trenes de la Rio Tinto Company Limited procedentes de las minas de cobre del norte de la provincia.', 'Porque allí se festejaba una fiesta tradicional antigua, en la cuál se bebía el tinto de la cosecha del año', 'Reciba tal nombre ya que la ciudad era famosa por su vino tinto especial llamado Tinto Onubo', '', 'muelle-del-tinto.jpg'),
+(5, 5, 'Málaga', '¿En qué año fue construida la fortaleza La Alcazaba?', 'Entre 1057 y 1063', 'Entre 1042 y 1065', 'Entre 1034 y 1048', 'Entre 1068 y 1074', '', 'alcazaba.jpg'),
+(6, 6, 'Almería', '¿Para qué se usó el Cable Inglés?', 'Fue un mirador muy moderno para su época', 'Fue un muelle-cargadero de minerales', 'Fue un puente que se quedó a medio construir', 'Fue una construcción para demostrar poder', '', 'cable-ingles.jpg'),
+(7, 7, 'Jaén', '¿En qué siglo se construyó el Castillo de Santa Catalina?', 'Siglos XIII y XIV', 'Siglos XII Y XIII', 'Siglos XV Y XVI', 'Siglos XVI Y XVII', '', 'santa-catalina.jpg'),
+(8, 8, 'Cádiz', '¿Por qué recibe este nombre?', 'Por Manuel de Falla', 'Por las famosas Fallas de Cádiz', 'Por José Luis Peréz Falla, arquitecto construyó el teatro', 'Debido a los repetidos fallos a la hora de su construcción', '', 'falla.jpg');
 
 --
 -- Índices para tablas volcadas

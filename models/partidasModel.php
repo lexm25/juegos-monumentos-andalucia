@@ -2,16 +2,16 @@
 
 function getConnection()
 {
-   $user = 'root';
-   $password = 'root';
-   $dbname = 'JuegoMonumentos';
+   $user = 'developer';
+   $password = 'developer';
+   $dbname = 'juegomonumentos';
    return new PDO('mysql:host=localhost;dbname=' . $dbname, $user, $password);
 }
 
 function getPartidas()
 {
    $con = getConnection();
-   $result = $con->query('SELECT * FROM `partidas` ORDER BY `tiempo` ASC , `puntos` DESC, vida DESC limit 5');
+   $result = $con->query('SELECT * FROM partidas ORDER BY tiempo ASC , puntos DESC, vida DESC limit 5');
    $filas = [];
    while ($fila = $result->fetch()) {
       $filas[] = $fila;

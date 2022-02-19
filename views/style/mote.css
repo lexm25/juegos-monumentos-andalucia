@@ -17,7 +17,7 @@
   }
 
   body {
-    background-image: url("../../images/maxresdefault.jpg");
+    background-image: url("../../images/monumentos/maxresdefault.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -37,7 +37,7 @@
   }
 
   #prueba {
-    background-image: url("../../images/Bandera_de_Andalucia.svg.png");
+    background-image: url("../../images/monumentos/Bandera_de_Andalucia.svg.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     /*opacity: 0.7;*/
