@@ -67,11 +67,22 @@ $(document).ready(function () {
 
 
     //Si se cierra el modal, puede  moverse
+    // Cuando pulse cerrar en el modal de las preguntas, las seleccion del botón y el color se resetearan
     $(".botonCerrar").on("click", function () {
         $(document).on("keydown", mover);
+
+        //habilitar los botones
         $('input[name="options-outlined"]').prop('disabled', false);
+
+        //Quitar el marcado del radio y reestablecer el color de fondo del boton cuando es correcto
         $(" #modal label.btn-outline-success").prev().prop("checked", false);
         $(" #modal label.btn-outline-success").removeClass("btn-outline-success").addClass("btn-outline-info");
+        //Quitar el marcado del radio y reestablecer el color de fondo del boton cuando es incorrecto
+        $(" #modal label.btn-outline-danger").prev().prop("checked", false);
+        $(" #modal label.btn-outline-danger").removeClass("btn-outline-danger").addClass("btn-outline-info");
+
+        //borrar el div de descripcion
+        $("#modal div[id=descripcion]").remove();
 
     })
     //Se establece el valor inicial del cronómetro
@@ -301,7 +312,11 @@ function finalPantalla(leftMunieco) {
     }
 }
 
-// Eddy función
+// Eddy función comprobar respuesta correcta e incorrecta,
+// sumar puntos si es correcta y poner la respuesta en verde y añadir un div con una breve descripción del monumento
+// quitar corazón si es incorrecta y poner la respuesta en rojo
+
+// no dejar que cierre el modal hasta que no responda
 function controlarPreguntas() {
     $(this).parent().children().attr("disabled", true);
     var texto = $(this).next().text();
@@ -311,11 +326,33 @@ function controlarPreguntas() {
         $(this).attr("disabled", false);
         $(this).next().removeClass("btn-outline-info").addClass("btn-outline-success");
 
+        var divPrincipal = $("<div>", {
+            "class": "col text-center py-4", "id": "descripcion"
+        }).append($("<p>", {
+            "text": objProvincia[0].descripcion
+        }));
+        $(".modal-body").append(divPrincipal);
 
 
     } else {
-        $(this).addClass("btn-danger");
-        // buscar el label correcto y ponerlo a verde
+        $(this).attr("disabled", false);
+        $(this).next().removeClass("btn-outline-info").addClass("btn-outline-danger");
+
+        // no definida la variable last
+        for (let i = 4; i >= 0; i++) {
+            if(last.hasClass("fas")){
+               last.removeClass("fas").addClass("fal");
+               sessionStorage.setItem("vida" ,parseInt(sessionStorage.getItem("vida")) - 1 );
+               break;
+            }else{
+                if(i==0){
+                    //GameOver : Ir a la página de Register o una página de GameOver que ha perdido toda la vida
+                }
+                last=last.parent().eq(i);
+            }
+        }
+        
+
         // y después quitar 1 vida y llevarlo a gameOver un modal que pregunta si quieres repetir
         // si dice que si lleva otra vez a la pantalla de seleccion de personajes
         // si dice que no que lleve a la pantalla de INICIO ingresar mote
