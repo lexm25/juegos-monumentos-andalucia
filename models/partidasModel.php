@@ -34,7 +34,8 @@ function getTodasPartidasNumeradas()
 
 
 
-function setPartida($mote,$puntos,$vida,$tiempo){
+function setPartida($mote, $puntos, $vida, $tiempo)
+{
    try {
       $con = getConnection();
       $sql = $con->prepare("INSERT into partidas values(null,:mote,:puntos,:vida,:tiempo)");
@@ -44,10 +45,11 @@ function setPartida($mote,$puntos,$vida,$tiempo){
       $sql->bindParam(":tiempo", $tiempo);
       $sql->execute();
       $id = $con->lastInsertId();
-  } catch (PDOException $e) {
+   } catch (PDOException $e) {
       echo $e;
-  }
-  $con = null;
-  return $id;
+   }
+   $con = null;
+   session_start();
+   $_SESSION["idPartida"] = $id;
+   return $id;
 }
-

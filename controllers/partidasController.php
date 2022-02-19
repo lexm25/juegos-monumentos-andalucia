@@ -19,7 +19,8 @@ function registrar(){
 function ranking(){
     include_once "./models/partidasModel.php";
     $partidasRanking= getTodasPartidasNumeradas();
-    echo $_POST["idPartida"] ."". json_encode($partidasRanking);
+    session_start();
+    echo $_SESSION["idPartida"] ."". json_encode($partidasRanking);
 }
 //La pantalla de resultado
 function resultado(){
