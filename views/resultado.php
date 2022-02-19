@@ -24,10 +24,10 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Xampion der huego</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title">¡HAS TERMINADO EL JUEGO!</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Enoraguena <?php echo $partidas[0]['mote']; ?> âh ganao <?php echo $partidas[0]['puntos']; ?> puntô te âh ganao una Çigala y un hamón roça imbiçible que êttamô en criçî</p>
+                        <p>Enoraguena <?php echo $partidas[0]['mote']; ?> has acabado el juego con <?php echo $partidas[0]['puntos'];?> puntos. Ahora puedes ver tu posición en el ránkin.</p>
                     </div>
                 </div>
             </div>

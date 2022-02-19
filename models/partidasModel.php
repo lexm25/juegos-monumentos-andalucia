@@ -11,7 +11,7 @@ function getConnection()
 function getPartidas()
 {
    $con = getConnection();
-   $result = $con->query('SELECT * FROM `partidas` ORDER BY `tiempo` ASC , `puntos` DESC, vida DESC limit 5');
+   $result = $con->query('SELECT * FROM partidas ORDER BY tiempo ASC , puntos DESC, vida DESC limit 5');
    $filas = [];
    while ($fila = $result->fetch()) {
       $filas[] = $fila;
