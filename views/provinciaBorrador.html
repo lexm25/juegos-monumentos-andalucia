@@ -15,9 +15,10 @@
 </head>
 
 <body>
-<!--BORRAR-->
-    <img id="piedra" width="80px" src="../images/piedra.png" class="position-absolute " style="z-index:2;display: none;">
-<!--BORRAR-->
+    <!--BORRAR-->
+    <img id="piedra" width="80px" src="../images/piedra.png" class="position-absolute "
+        style="z-index:2;display: none;">
+    <!--BORRAR-->
 
     <!-- CABECERA -->
     <div class="row">
@@ -29,14 +30,15 @@
             </div>
         </div>
         <div class="col-4 row d-flex justify-content-center align-items-center ">
-            <div class="col-6 text-danger h1 d-flex justify-content-evenly" style="position: relative;" id="vidas"></div>
+            <div class="col-6 text-danger h1 d-flex justify-content-evenly" style="position: relative;" id="vidas">
+            </div>
             <div class="col-6 h2" id="puntos">5000</div>
         </div>
     </div>
 
     <img id="heart" class="d-none" src="../images/heart.gif" width="100px" height="100px"
         style="position: absolute; top:150px ; left: 250px;">
-        
+
     <div id="fondo" style="height: 500px; background: linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)), url('./../images/sueloSevilla.jpg');
                 background-repeat: no-repeat;
                 background-size: cover;">
@@ -44,17 +46,18 @@
         <div class="text-center" id="munieco" style="position: absolute;z-index:1; top:300px"></div>
 
         <div class="text-center">
-            <img id="monumento" class="position-absolute" src="../images/monumentos/archivo-indias-1.jpg" width= "200px" height="200px" style="top:300px">
+            <img id="monumento" class="position-absolute" src="../images/monumentos/archivo-indias-1.jpg" width="200px"
+                height="200px" style="top:300px">
         </div>
 
-<!--BORRAR-->
-        <img id="nube1" src="../images/nube1.png"  style="position:relative ;display: none;">
+        <!--BORRAR-->
+        <img id="nube1" src="../images/nube1.png" style="position:relative ;display: none;">
         <img id="nube2" src="../images/nube2.png" class="position-absolute " style="display: none;">
-        <img id="nube3" src="../images/nube3.png" class="position-absolute " style="display: none;" >
+        <img id="nube3" src="../images/nube3.png" class="position-absolute " style="display: none;">
         <img id="nube4" src="../images/nube4.png" class="position-absolute " style="display: none;">
         <img id="nube5" src="../images/nube5.png" class="position-absolute " style="display: none;">
 
-       
+
 
         <!-- Button trigger modal -->
         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -63,7 +66,7 @@
             cuadrado
         </div>
          </button> -->
-<!--BORRAR-->
+        <!--BORRAR-->
 
         <!-- MODAL PREGUNTA -->
         <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -159,19 +162,23 @@
                 <div class="modal-content">
                     <div class="modal-header bg-success">
                         <h5 class="modal-title fw-bold" id="staticBackdropLabel">
-                            Lo siento, Has perdido... ¿Quieres repetir el juego?
-                        </h5>
+                            ¡¡Game Over!!
+                        </h5>  
+                    </div>
+                    <div class="modal-body">
+                        <p>Lo siento, Has perdido... ¿Quieres repetir el juego?</p>
                     </div>
                     <div class="modal-footer bg-success">
-                        <button type="button" class="btn btn-secondary bg-white" id="botonSi"
-                            data-bs-dismiss="modal" style="color: black;">Sí, !Por supuesto!</button>
-                            <button type="button" class="btn btn-secondary bg-white" id="botonNo"
-                            data-bs-dismiss="modal" style="color: black;">No, No me gusta este juego</button>
+                        <button type="button" class="btn btn-secondary bg-white" id="botonSi" data-bs-dismiss="modal"
+                            style="color: black;">Sí, !Por supuesto!</button>
+                        <button type="button" class="btn btn-secondary bg-white" id="botonNo" data-bs-dismiss="modal"
+                            style="color: black;">No, No me gusta este juego</button>
 
                     </div>
                 </div>
             </div>
         </div>
+        <img id='blood' width='100px' src='../images/blood2.gif' style='z-index:1 ;position:absolute;top:350px;display: none;'>
     </div>
 </body>
 

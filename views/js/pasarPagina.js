@@ -46,23 +46,6 @@ $(document).ready(function () {
 
         $('#modal input[type="radio"]').change(controlarPreguntas);
 
-
-        //Si cierra el modal y no ha acertado
-        /*  var last=  $("#vidas").last();
-          for (let i = 4; i >= 0; i++) {
-              if(last.hasClass("fas")){
-                 last.removeClass("fas").addClass("fal");
-                 sessionStorage.setItem("vida" ,parseInt(sessionStorage.getItem("vida")) - 1 );
-                 break;
-              }else{
-                  if(i==0){
-                      //GameOver : Ir a la página de Register o una página de GameOver que ha perdido toda la vida
-                  }
-                  last=last.parent().eq(i);
-              }
-          }
-  
-  */
     })
 
 
@@ -229,15 +212,6 @@ function mover(e) {
                                 }
                             });
                         } else {
-                            //Caida de piedra cuando falla
-                            /*$("#piedra").fadeIn();
-                            $("#piedra").css("left", parseInt($("#munieco").css("left").split(/px/)[0])+40)
-                            $("#piedra").animate({
-                                top: "+=350" + "px"
-                            }, 500, function () { });
-                            $("body").append("<audio src='./../images/piedra.mp3' autoplay></audio>")*/
-
-
                                 $("#vidas").animate({
                                     fontSize: "+=5" + "px",
                                 }, 200, function () { }).animate({
@@ -251,8 +225,6 @@ function mover(e) {
                                 },100).animate({
                                     fontSize: "-=5" + "px",
                                 },200);
-                            
-
                         }
 
                     }
@@ -302,6 +274,7 @@ function finalPantalla(leftMunieco) {
 
     //Si el muñeco ha llegado hasta el final de la pantalla 
     if (window.innerWidth <= leftMunieco + parseInt($("#munieco").css("width").split(/px/)[0])) {
+        $("#blood").hide();
         modalShown = false;
         //Empezar el muñeco desde el inicio de la pantalla
         $("#munieco").css("left", "0px");
@@ -372,6 +345,18 @@ function controlarPreguntas() {
                         window.location.replace("./../index.php?action=entrarPartida");
                     });
                 }
+                //Caida de piedra cuando falla
+                $("#piedra").fadeIn();
+                $("#piedra").css("left", parseInt($("#munieco").css("left").split(/px/)[0])+40)
+                $("#piedra").animate({
+                    top: "+=350" + "px"
+                }, 500, function () { 
+                    $("#blood").fadeIn();
+                    $("#blood").css("left", $("#piedra").css("left"));
+                });
+                $("body").append("<audio src='./../images/piedra.mp3' autoplay></audio>")
+                $("#piedra").fadeOut(2000);
+                $("#piedra").css("top", 0);
                last.removeClass("fas").addClass("far");
                sessionStorage.setItem("vida" ,parseInt(sessionStorage.getItem("vida")) - 1 );
                break;
