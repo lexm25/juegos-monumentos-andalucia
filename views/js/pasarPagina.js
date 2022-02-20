@@ -315,7 +315,8 @@ function controlarPreguntas() {
     var texto = $(this).next().text();
 
     if (texto == objProvincia[0].respuestaCorrecta) {
-        sessionStorage.setItem("puntos", sessionStorage.getItem("puntos") + 100);
+        sessionStorage.setItem("puntos", parseInt(sessionStorage.getItem("puntos")) + 100);
+        $("#puntos").text(sessionStorage.getItem("puntos"));
         $(this).attr("disabled", false);
         $(this).next().removeClass("btn-outline-info").addClass("btn-outline-success");
 
@@ -324,7 +325,7 @@ function controlarPreguntas() {
         }).append($("<p>", {
             "text": objProvincia[0].descripcion
         }));
-        $(".modal-body").append(divPrincipal);
+        $(" #modal .modal-body").append(divPrincipal);
 
 
     } else {
