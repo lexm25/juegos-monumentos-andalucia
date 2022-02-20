@@ -156,7 +156,7 @@ function mover(e) {
                 modalShown = true;
                 $(document).off("keydown");
                 $("#modal").modal("show");
-
+                $("#botonPregunta").attr("disabled", true);
                 crearArbolPreguntas();
             }
         }
@@ -320,6 +320,8 @@ function controlarPreguntas() {
         $(this).attr("disabled", false);
         $(this).next().removeClass("btn-outline-info").addClass("btn-outline-success");
 
+        $("#botonPregunta").attr("disabled", false);
+
         var divPrincipal = $("<div>", {
             "class": "col text-center py-4", "id": "descripcion"
         }).append($("<p>", {
@@ -331,6 +333,8 @@ function controlarPreguntas() {
     } else {
         $(this).attr("disabled", false);
         $(this).next().removeClass("btn-outline-info").addClass("btn-outline-danger");
+
+        $("#botonPregunta").attr("disabled", false);
 
         // no definida la variable last
         var last = $("#vidas").children().last();
