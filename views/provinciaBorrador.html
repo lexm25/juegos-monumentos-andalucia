@@ -65,7 +65,7 @@
          </button> -->
 <!--BORRAR-->
 
-        <!-- MODAL SELECCIÓN PERSONAJE -->
+        <!-- MODAL PREGUNTA -->
         <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -108,7 +108,7 @@
         </div>
 
 
-        <!-- MODAL PREGUNTA -->
+        <!-- MODAL SELECCIÓN PERSONAJE -->
         <div class="modal fade" id="modalMunieco" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -147,6 +147,27 @@
                     <div class="modal-footer bg-success">
                         <button id="modalMuniecoEvento" type="button"
                             class="btn btn-success botonCerrar bg-white">Play!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL GameOver -->
+        <div class="modal fade" id="modalGameOver" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                            Lo siento, Has perdido... ¿Quieres repetir el juego?
+                        </h5>
+                    </div>
+                    <div class="modal-footer bg-success">
+                        <button type="button" class="btn btn-secondary bg-white" id="botonSi"
+                            data-bs-dismiss="modal" style="color: black;">Sí, !Por supuesto!</button>
+                            <button type="button" class="btn btn-secondary bg-white" id="botonNo"
+                            data-bs-dismiss="modal" style="color: black;">No, No me gusta este juego</button>
+
                     </div>
                 </div>
             </div>

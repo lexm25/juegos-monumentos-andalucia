@@ -273,7 +273,7 @@ function mover(e) {
 function finalPantalla(leftMunieco) {
 
      //Enviar los datos al servidor en el caso de la última provincia
-     if (provincia == 3) {
+     if (provincia == 6) {
         var sBD = s, mBD = m;
         if (s < 9) {
             sBD = "0" + s;
@@ -359,16 +359,24 @@ function controlarPreguntas() {
         $(this).next().removeClass("btn-outline-info").addClass("btn-outline-danger");
 
         // no definida la variable last
-        for (let i = 4; i >= 0; i++) {
+        var last = $("#vidas").children().last();
+        for (let i = 3; i >= -1; i--) {
             if(last.hasClass("fas")){
-               last.removeClass("fas").addClass("fal");
+                if(i==-1){
+                    $("#modalGameOver").modal("show");
+                    //Para repetir el juego en el cado de que hayamos perdido
+                    $("#botonSi").click(function () {
+                        window.location.replace("./provinciaBorrador.html");
+                    });
+                    $("#botonNo").click(function () {
+                        window.location.replace("./../index.php?action=entrarPartida");
+                    });
+                }
+               last.removeClass("fas").addClass("far");
                sessionStorage.setItem("vida" ,parseInt(sessionStorage.getItem("vida")) - 1 );
                break;
             }else{
-                if(i==0){
-                    //GameOver : Ir a la página de Register o una página de GameOver que ha perdido toda la vida
-                }
-                last=last.parent().eq(i);
+                last=last.parent().children().eq(i);
             }
         }
         
