@@ -64,6 +64,9 @@ $(document).ready(function () {
         $(" #modal label.btn-outline-danger").prev().prop("checked", false);
         $(" #modal label.btn-outline-danger").removeClass("btn-outline-danger").addClass("btn-outline-info");
 
+        //Quitar el marcado de la respuesta correcta que aparec cuando falla la pregunta
+        $(" #modal label.bg-success").removeClass("bg-success").addClass("btn-outline-info");
+
         //borrar el div de descripcion
         $("#modal div[id=descripcion]").remove();
 
@@ -318,8 +321,11 @@ function controlarPreguntas() {
         sessionStorage.setItem("puntos", parseInt(sessionStorage.getItem("puntos")) + 100);
         $("#puntos").text(sessionStorage.getItem("puntos"));
         $(this).attr("disabled", false);
+
+        // Selecciono el radio y de ahí le digo que la siguiente etiqueta (label) cambie el color
         $(this).next().removeClass("btn-outline-info").addClass("btn-outline-success");
 
+        //desbloquear el boton cerrar modal
         $("#botonPregunta").attr("disabled", false);
 
         var divPrincipal = $("<div>", {
@@ -336,13 +342,30 @@ function controlarPreguntas() {
 
         $("#botonPregunta").attr("disabled", false);
 
-        // no definida la variable last
+        // Aparece la respuesta correcta también y la descripción
+        // $("#modal label[text=]")
+        $("#modal label").each(function(i){
+            var respuesta = $(this).text();
+            if(respuesta == objProvincia[0].respuestaCorrecta){
+                
+                $(this).removeClass("btn-outline-info").addClass("bg-success");
+
+                var divPrincipal = $("<div>", {
+                    "class": "col text-center py-4", "id": "descripcion"
+                }).append($("<p>", {
+                    "text": objProvincia[0].descripcion
+                }));
+                $(" #modal .modal-body").append(divPrincipal);
+            }
+    
+        });
+        
         var last = $("#vidas").children().last();
         for (let i = 3; i >= -1; i--) {
             if(last.hasClass("fas")){
                 if(i==-1){
                     $("#modalGameOver").modal("show");
-                    //Para repetir el juego en el cado de que hayamos perdido
+                    //Para repetir el juego en el caso de que hayamos perdido
                     $("#botonSi").click(function () {
                         window.location.replace("./provinciaBorrador.html");
                     });
