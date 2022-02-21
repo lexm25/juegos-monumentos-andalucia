@@ -2,9 +2,9 @@
 
 function getConnection()
 {
-   $user = 'root';
-   $password = 'root';
-   $dbname = 'JuegoMonumentos';
+   $user = 'developer';
+   $password = 'developer';
+   $dbname = 'juegomonumentos';
    return new PDO('mysql:host=localhost;dbname=' . $dbname, $user, $password);
 }
 
