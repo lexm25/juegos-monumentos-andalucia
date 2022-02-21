@@ -10,14 +10,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.min.css" />
     <script src="./js/pasarPagina.js"></script>
+    <script type="text/javascript" src="./snow/snow.js"></script>
+
     <title>Preguntas monumentos</title>
     <link rel="stylesheet" type="text/css" href="./style/provinciaBorrador.css">
+    <link rel="icon" type="image/x-icon" href="../images/andaluciaFavicon.png">
 </head>
 
 <body>
     <!--BORRAR-->
     <img id="piedra" width="80px" src="../images/piedra.png" class="position-absolute "
-        style="z-index:2;display: none;">
+        style="z-index:4;display: none;">
     <!--BORRAR-->
 
     <!-- CABECERA -->
@@ -37,25 +40,32 @@
     </div>
 
     <img id="heart" class="d-none" src="../images/heart.gif" width="100px" height="100px"
-        style="position: absolute; top:150px ; left: 250px;">
+        style="position: absolute; top:300px ; left: 250px;">
 
     <div id="fondo" style="height: 700px; background: linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)), url('./../images/sueloSevilla.jpg');
                 background-repeat: no-repeat;
                 background-size: cover;">
 
-        <div class="text-center" id="munieco" style="position: absolute;z-index:1; top:300px"></div>
+        <div class="text-center" id="munieco" style="position: absolute;z-index:2; top:300px"></div>
 
         <div class="text-center">
             <img id="monumento" class="position-absolute" src="../images/monumentos/archivo-indias-1.jpg" width="200px"
-                height="200px" style="top:300px">
+                height="200px" style="top:400px;z-index:1">
         </div>
 
-        <!--BORRAR-->
-        <img id="nube1" src="../images/nube1.png" style="position:relative ;display: none;">
-        <img id="nube2" src="../images/nube2.png" class="position-absolute " style="display: none;">
-        <img id="nube3" src="../images/nube3.png" class="position-absolute " style="display: none;">
-        <img id="nube4" src="../images/nube4.png" class="position-absolute " style="display: none;">
-        <img id="nube5" src="../images/nube5.png" class="position-absolute " style="display: none;">
+        <img  id="nube1" src="../images/nube1.png"  class="nubes position-absolute  " style="left: 600px;" width="300px">
+        <img id="nube2" src="../images/nube2.png" class="nubes position-absolute " style="left: 200px;" width="300px" >
+        <img id="nube3" src="../images/nube1.png" class="nubes position-absolute " style="left: 900px;" width="300px" >
+        <img id="nube4" src="../images/nube1.png" class="nubes position-absolute " style="left: 100px;" width="300px" >
+        <img id="nube5" src="../images/nube2.png" class="nubes position-absolute " style="left: 1000px;" width="300px" >
+        <img id="nube6" src="../images/nube1.png" class="nubes position-absolute " style="left: 100px;" width="300px" >
+        <img id="nube7" src="../images/nube2.png" class="nubes position-absolute " style="left: 500px;" width="300px" >
+        <img id="nube8" src="../images/nube1.png" class="nubes position-absolute " style="left: 700px;" width="300px" >
+        <img id="nube9" src="../images/nube2.png" class="nubes position-absolute " style="left: 700px;" width="300px" >
+
+
+
+
 
 
 
@@ -177,7 +187,7 @@
                 </div>
             </div>
         </div>
-        <img id='blood' width='100px' src='../images/blood2.gif' style='z-index:1 ;position:absolute;top:350px;display: none;'>
+        <img id='impacto' width='100px' src='../images/impacto.png' style='z-index:4 ;position:absolute;top:520px;display: none;'>
         <div class="row position-relative" style="top: 350px; ">
             <img src="../images/camino.png" alt="" class="col-4 px-0" height="250px">
             <img src="../images/camino.png" alt="" class="col-4 px-0" height="250px">

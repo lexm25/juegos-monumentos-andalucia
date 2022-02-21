@@ -26,7 +26,7 @@ $(document).ready(function () {
         var muniecoSeleccionado = [...$(this).parent().parent().find(".modal-body").children()].filter((m) => m.checked == true);
         if (muniecoSeleccionado.length != 0) {
             $("#modalMunieco").modal("hide");
-            $("#munieco").append("<img src='" + $("#" + muniecoSeleccionado[0].id).next().children()[0].src + "' width='200px' height='200px'>")
+            $("#munieco").append("<img src='" + $("#" + muniecoSeleccionado[0].id).next().children()[0].src + "' width='200px' height='200px' style='position:relative;top:150px'>")
         } else {
             if (!$("#modalMunieco .modal-body").children().last().hasClass("text-danger")) {
                 $("#modalMunieco .modal-body").append("<div class='text-danger py-3 h5'>¡¡¡¡Tienes que seleccionar un muñeco!!!!</div>")
@@ -149,10 +149,28 @@ function mover(e) {
         }
         var left = parseInt($("#munieco").css("left")) + 10;
         $("#munieco").css("left", left + "px");
+        $(".nubes:first").css("left", parseInt($(".nubes:first").css("left"))-1);
+        $("#nube3").css("left", parseInt($("#nube3").css("left"))-1);
+        $("#nube2").css("left", parseInt($("#nube2").css("left"))-1);
+        $("#nube4").css("left", parseInt($("#nube4").css("left"))-1);
+        $("#nube5").css("left", parseInt($("#nube5").css("left"))-1);
+        $("#nube6").css("left", parseInt($("#nube6").css("left"))-1);
+        $("#nube7").css("left", parseInt($("#nube7").css("left"))-1);
+        $("#nube8").css("left", parseInt($("#nube8").css("left"))-1);
+        $("#nube9").css("left", parseInt($("#nube9").css("left"))-1);
+
+        if(parseInt($("#nube6").css("left"))<= -170 ||parseInt($("#nube4").css("left")) <= -170 ){
+            $("#nube6").css("left",$(window).width());
+            $("#nube4").css("left",$(window).width());
+        }
+        if(parseInt($("#nube2").css("left"))<= -280 ){
+            $("#nube2").css("left",$(window).width());
+        }
+
+
         controlarModalMonumento(left);
 
     }
-
     function controlarModalMonumento(leftMunieco) {
         if (parseInt($("#munieco").css("left").split(/px/)[0]) >= parseInt($("#monumento").css("left").split(/px/)[0])) {
             if (modalShown == false) {
@@ -181,10 +199,10 @@ function mover(e) {
                     var heartLeft = parseInt($("#heart").css("left").split(/px/)[0]);
                     var heartwidth = parseInt($("#heart").attr("width").split(/px/)[0]) + heartLeft;
                     var munTop = parseInt($("#munieco").css("top").split(/px/)[0]);
-                    var heartTop = parseInt($("#heart").css("top").split(/px/)[0]);
+                    var heartTop = parseInt($("#heart").css("top").split(/px/)[0]) + parseInt($("#heart").attr("height").split(/px/)[0]);
 
                     //Si se come el corazón
-                    if (munLeft >= heartLeft && munLeft <= (heartwidth + 100) && munTop >= heartTop) {
+                    if (munLeft >= heartLeft && munLeft <= (heartwidth + 100) && munTop <= heartTop) {
                         if (parseInt(sessionStorage.getItem("vida")) < 6) {
                             sessionStorage.setItem("vida", parseInt(sessionStorage.getItem("vida")) + 1);
                             $("body").append("<audio src='./../images/heart.mp3' autoplay></audio>");
@@ -248,7 +266,7 @@ function mover(e) {
 }
 
 function finalPantalla(leftMunieco) {
-
+    $("#impacto").hide();
     //Si el muñeco ha llegado hasta el final de la pantalla 
     if (window.innerWidth <= leftMunieco + parseInt($("#munieco").css("width").split(/px/)[0])) {
         //Enviar los datos al servidor en el caso de la última provincia
@@ -279,7 +297,6 @@ function finalPantalla(leftMunieco) {
 
         }
 
-        $("#blood").hide();
         modalShown = false;
         //Empezar el muñeco desde el inicio de la pantalla
         $("#munieco").css("left", "0px");
@@ -302,10 +319,19 @@ function finalPantalla(leftMunieco) {
             $("#heart").removeClass("d-none");
             if (provincia == 4) {
                  $("#heart").css("left", "1000px");
-                 $("#heart").css("top", "150px");
+                 $("#heart").css("top", "300px");
             }
         } else {
             $("#heart").addClass("d-none");
+        }
+        if(provincia==3){
+            $(function() {
+                $(document).snow({ SnowImage: "./snow/snow.gif" });
+            });
+        }else{
+           /* $(function() {
+                $(document).snow({ SnowImage: "./snow/snow.gif" }).hidesnow();
+            });  */    
         }
 
     }
@@ -380,10 +406,10 @@ function controlarPreguntas() {
                 $("#piedra").fadeIn();
                 $("#piedra").css("left", parseInt($("#munieco").css("left").split(/px/)[0]) + 40)
                 $("#piedra").animate({
-                    top: "+=350" + "px"
+                    top: "+=520" + "px"
                 }, 500, function () {
-                    $("#blood").fadeIn();
-                    $("#blood").css("left", $("#piedra").css("left"));
+                    $("#impacto").fadeIn();
+                    $("#impacto").css("left", $("#piedra").css("left"));
                 });
                 $("body").append("<audio src='./../images/piedra.mp3' autoplay></audio>")
                 $("#piedra").fadeOut(2000);
@@ -394,6 +420,7 @@ function controlarPreguntas() {
             } else {
                 last = last.parent().children().eq(i);
             }
+
         }
 
 
