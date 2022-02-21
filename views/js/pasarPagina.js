@@ -198,7 +198,9 @@ function mover(e) {
                                 width: "0" + "px",
                                 height: "0" + "px",
                             }, 500, function () {
-                                $("#heart").remove();
+                                $("#heart").addClass("d-none");
+                                $("#heart").css("height",'');
+                                $("#heart").css("width",'');
                                 var first = $("#vidas").children().first();
                                 for (let i = 1; i <= 5; i++) {
                                     if (first.hasClass("far")) {
@@ -207,7 +209,7 @@ function mover(e) {
                                             fontSize: "+=5" + "px",
                                         }, 200, function () { }).animate({
                                             fontSize: "-=5" + "px",
-                                        },200);
+                                        }, 200);
                                         break;
                                     } else {
                                         first = $("#vidas").children().eq(i);
@@ -215,19 +217,19 @@ function mover(e) {
                                 }
                             });
                         } else {
-                                $("#vidas").animate({
-                                    fontSize: "+=5" + "px",
-                                }, 200, function () { }).animate({
-                                    left: "+=10" + "px",
-                                },100).animate({
-                                    left: "-=20" + "px",
-                                },100).animate({
-                                    left: "+=20" + "px",
-                                },100).animate({
-                                    left: "-=10" + "px",
-                                },100).animate({
-                                    fontSize: "-=5" + "px",
-                                },200);
+                            $("#vidas").animate({
+                                fontSize: "+=5" + "px",
+                            }, 200, function () { }).animate({
+                                left: "+=10" + "px",
+                            }, 100).animate({
+                                left: "-=20" + "px",
+                            }, 100).animate({
+                                left: "+=20" + "px",
+                            }, 100).animate({
+                                left: "-=10" + "px",
+                            }, 100).animate({
+                                fontSize: "-=5" + "px",
+                            }, 200);
                         }
 
                     }
@@ -247,36 +249,36 @@ function mover(e) {
 
 function finalPantalla(leftMunieco) {
 
-     //Enviar los datos al servidor en el caso de la última provincia
-     if (provincia == 6) {
-        var sBD = s, mBD = m;
-        if (s < 9) {
-            sBD = "0" + s;
-        }
-        if (m < 9) {
-            mBD = "0" + m;
-        }
-        var datos = {
-            mote: sessionStorage.getItem("mote"),
-            vida: sessionStorage.getItem("vida"),
-            puntos: sessionStorage.getItem("puntos"),
-            tiempo: "00:" + $("#cronometro").text(),
-        };
-
-        $.ajax({
-            data: datos,
-            url: "./../index.php?action=registrar",
-            type: "post",
-            success: function () {
-                //Vamos a la página de resultado
-                window.location.replace("../index.php?action=resultado");
-            }
-        });
-
-    }
-
     //Si el muñeco ha llegado hasta el final de la pantalla 
     if (window.innerWidth <= leftMunieco + parseInt($("#munieco").css("width").split(/px/)[0])) {
+        //Enviar los datos al servidor en el caso de la última provincia
+        if (provincia + 1 == 6) {
+            var sBD = s, mBD = m;
+            if (s < 9) {
+                sBD = "0" + s;
+            }
+            if (m < 9) {
+                mBD = "0" + m;
+            }
+            var datos = {
+                mote: sessionStorage.getItem("mote"),
+                vida: sessionStorage.getItem("vida"),
+                puntos: sessionStorage.getItem("puntos"),
+                tiempo: "00:" + $("#cronometro").text(),
+            };
+
+            $.ajax({
+                data: datos,
+                url: "./../index.php?action=registrar",
+                type: "post",
+                success: function () {
+                    //Vamos a la página de resultado
+                    window.location.replace("../index.php?action=resultado");
+                }
+            });
+
+        }
+
         $("#blood").hide();
         modalShown = false;
         //Empezar el muñeco desde el inicio de la pantalla
@@ -290,19 +292,20 @@ function finalPantalla(leftMunieco) {
             success: function (response) {
                 var provincia = JSON.parse(response);
                 $("#fondo").css("background", "linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)), url(./../images/monumentos/" + provincia[0].fondo + ")");
-                $("#monumento").attr("src", "./../images/monumentos/" + provincia[0].imagen);   
+                $("#monumento").attr("src", "./../images/monumentos/" + provincia[0].imagen);
             }
         });
-        
+
 
         //sitios que aparece el corazón
         if (provincia == 2 || provincia == 4 || provincia == 6) {
-            $("#heart").toggleClass("d-none");
+            $("#heart").removeClass("d-none");
             if (provincia == 4) {
-                $("#heart").css("left", "1000px");
+                 $("#heart").css("left", "1000px");
+                 $("#heart").css("top", "150px");
             }
         } else {
-            $("#heart").toggleClass("d-none");
+            $("#heart").addClass("d-none");
         }
 
     }
@@ -344,10 +347,10 @@ function controlarPreguntas() {
 
         // Aparece la respuesta correcta también y la descripción
         // $("#modal label[text=]")
-        $("#modal label").each(function(i){
+        $("#modal label").each(function (i) {
             var respuesta = $(this).text();
-            if(respuesta == objProvincia[0].respuestaCorrecta){
-                
+            if (respuesta == objProvincia[0].respuestaCorrecta) {
+
                 $(this).removeClass("btn-outline-info").addClass("bg-success");
 
                 var divPrincipal = $("<div>", {
@@ -357,13 +360,13 @@ function controlarPreguntas() {
                 }));
                 $(" #modal .modal-body").append(divPrincipal);
             }
-    
+
         });
-        
+
         var last = $("#vidas").children().last();
         for (let i = 3; i >= -1; i--) {
-            if(last.hasClass("fas")){
-                if(i==-1){
+            if (last.hasClass("fas")) {
+                if (i == -1) {
                     $("#modalGameOver").modal("show");
                     //Para repetir el juego en el caso de que hayamos perdido
                     $("#botonSi").click(function () {
@@ -375,24 +378,24 @@ function controlarPreguntas() {
                 }
                 //Caida de piedra cuando falla
                 $("#piedra").fadeIn();
-                $("#piedra").css("left", parseInt($("#munieco").css("left").split(/px/)[0])+40)
+                $("#piedra").css("left", parseInt($("#munieco").css("left").split(/px/)[0]) + 40)
                 $("#piedra").animate({
                     top: "+=350" + "px"
-                }, 500, function () { 
+                }, 500, function () {
                     $("#blood").fadeIn();
                     $("#blood").css("left", $("#piedra").css("left"));
                 });
                 $("body").append("<audio src='./../images/piedra.mp3' autoplay></audio>")
                 $("#piedra").fadeOut(2000);
                 $("#piedra").css("top", 0);
-               last.removeClass("fas").addClass("far");
-               sessionStorage.setItem("vida" ,parseInt(sessionStorage.getItem("vida")) - 1 );
-               break;
-            }else{
-                last=last.parent().children().eq(i);
+                last.removeClass("fas").addClass("far");
+                sessionStorage.setItem("vida", parseInt(sessionStorage.getItem("vida")) - 1);
+                break;
+            } else {
+                last = last.parent().children().eq(i);
             }
         }
-        
+
 
         // y después quitar 1 vida y llevarlo a gameOver un modal que pregunta si quieres repetir
         // si dice que si lleva otra vez a la pantalla de seleccion de personajes
