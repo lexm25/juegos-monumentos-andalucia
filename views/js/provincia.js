@@ -4,11 +4,11 @@ var s = 0;
 var m = 0;
 var segundosSalto = 0;
 var provincia = 1;
-sessionStorage.setItem('idProvincia', provincia);
 var modalShown = false;
-var objProvincia = [];
-sessionStorage.setItem("vida", 5);
-sessionStorage.setItem("puntos", 0);
+//Array de preguntas
+var objPreguntas = [];
+var vida= 5;
+var puntos= 0;
 
 $(document).ready(function () {
 
@@ -149,42 +149,32 @@ function mover(e) {
         }
         var left = parseInt($("#munieco").css("left")) + 10;
         $("#munieco").css("left", left + "px");
-        $(".nubes:first").css("left", parseInt($(".nubes:first").css("left"))-1);
-        $("#nube3").css("left", parseInt($("#nube3").css("left"))-1);
-        $("#nube2").css("left", parseInt($("#nube2").css("left"))-1);
-        $("#nube4").css("left", parseInt($("#nube4").css("left"))-1);
-        $("#nube5").css("left", parseInt($("#nube5").css("left"))-1);
-        $("#nube6").css("left", parseInt($("#nube6").css("left"))-1);
-        $("#nube7").css("left", parseInt($("#nube7").css("left"))-1);
-        $("#nube8").css("left", parseInt($("#nube8").css("left"))-1);
-        $("#nube9").css("left", parseInt($("#nube9").css("left"))-1);
+        //Movimiento Nubes
+        $(".nubes:first").css("left", parseInt($(".nubes:first").css("left")) - 1);
+        $("#nube3").css("left", parseInt($("#nube3").css("left")) - 1);
+        $("#nube2").css("left", parseInt($("#nube2").css("left")) - 1);
+        $("#nube4").css("left", parseInt($("#nube4").css("left")) - 1);
+        $("#nube5").css("left", parseInt($("#nube5").css("left")) - 1);
+        $("#nube6").css("left", parseInt($("#nube6").css("left")) - 1);
+        $("#nube7").css("left", parseInt($("#nube7").css("left")) - 1);
+        $("#nube8").css("left", parseInt($("#nube8").css("left")) - 1);
+        $("#nube9").css("left", parseInt($("#nube9").css("left")) - 1);
 
-        if(parseInt($("#nube6").css("left"))<= -170 ||parseInt($("#nube4").css("left")) <= -170 ){
-            $("#nube6").css("left",$(window).width());
-            $("#nube4").css("left",$(window).width());
+        if (parseInt($("#nube6").css("left")) <= -170 || parseInt($("#nube4").css("left")) <= -170) {
+            $("#nube6").css("left", $(window).width());
+            $("#nube4").css("left", $(window).width());
         }
-        if(parseInt($("#nube2").css("left"))<= -280 ){
-            $("#nube2").css("left",$(window).width());
+        if (parseInt($("#nube2").css("left")) <= -280) {
+            $("#nube2").css("left", $(window).width());
         }
 
 
         controlarModalMonumento(left);
 
     }
-    function controlarModalMonumento(leftMunieco) {
-        if (parseInt($("#munieco").css("left").split(/px/)[0]) >= parseInt($("#monumento").css("left").split(/px/)[0])) {
-            if (modalShown == false) {
-                modalShown = true;
-                $(document).off("keydown");
-                $("#modal").modal("show");
-                $("#botonPregunta").attr("disabled", true);
-                crearArbolPreguntas();
-            }
-        }
-        finalPantalla(leftMunieco);
-    }
+    
 
-    //Si pulsa la tecla Space, salta
+    //Si pulsa la tecla Space o la flecha arriba, salta
     if (e.keyCode == 32 || e.keyCode == 38) {
         //Para que no pueda saltar muchas veces en menos de un segundo
         if (((s + (m * 60)) - 1) >= segundosSalto) {
@@ -203,8 +193,8 @@ function mover(e) {
 
                     //Si se come el corazón
                     if (munLeft >= heartLeft && munLeft <= (heartwidth + 100) && munTop <= heartTop) {
-                        if (parseInt(sessionStorage.getItem("vida")) < 5) {
-                            sessionStorage.setItem("vida", parseInt(sessionStorage.getItem("vida")) + 1);
+                        if (vida < 5) {
+                            vida++;
                             $("body").append("<audio src='./../images/heart.mp3' autoplay></audio>");
 
                             $("#heart").animate({
@@ -217,8 +207,8 @@ function mover(e) {
                                 height: "0" + "px",
                             }, 500, function () {
                                 $("#heart").addClass("d-none");
-                                $("#heart").css("height",'');
-                                $("#heart").css("width",'');
+                                $("#heart").css("height", '');
+                                $("#heart").css("width", '');
                                 var first = $("#vidas").children().first();
                                 for (let i = 1; i <= 5; i++) {
                                     if (first.hasClass("far")) {
@@ -264,9 +254,22 @@ function mover(e) {
         }
     }
 }
+//Para que salte el modal
+function controlarModalMonumento(leftMunieco) {
+    if (parseInt($("#munieco").css("left").split(/px/)[0]) >= parseInt($("#monumento").css("left").split(/px/)[0])) {
+        if (modalShown == false) {
+            modalShown = true;
+            $(document).off("keydown");
+            $("#modal").modal("show");
+            $("#botonPregunta").attr("disabled", true);
+            crearArbolPreguntas();
+        }
+    }
+    finalPantalla(leftMunieco);
+}
 
+//Si ha llegado hasta el final de la provincia
 function finalPantalla(leftMunieco) {
-    $("#impacto").hide();
     //Si el muñeco ha llegado hasta el final de la pantalla 
     if (window.innerWidth <= leftMunieco + parseInt($("#munieco").css("width").split(/px/)[0])) {
         //Enviar los datos al servidor en el caso de la última provincia
@@ -280,8 +283,8 @@ function finalPantalla(leftMunieco) {
             }
             var datos = {
                 mote: sessionStorage.getItem("mote"),
-                vida: sessionStorage.getItem("vida"),
-                puntos: sessionStorage.getItem("puntos"),
+                vida: vida,
+                puntos: puntos,
                 tiempo: "00:" + $("#cronometro").text(),
             };
 
@@ -298,7 +301,7 @@ function finalPantalla(leftMunieco) {
         }
 
         modalShown = false;
-        //Empezar el muñeco desde el inicio de la pantalla
+        //Cambio de provincia:: Empezar el muñeco desde el inicio de la pantalla
         $("#munieco").css("left", "0px");
         provincia++;
         //Petición al servidor para recoger los datos de la provincia actual y cambiar el entorno con los datos recibidos
@@ -314,24 +317,24 @@ function finalPantalla(leftMunieco) {
         });
 
 
-        //sitios que aparece el corazón
+        //sitios que aparece el corazón y la nieve
         if (provincia == 2 || provincia == 4 || provincia == 6) {
             $("#heart").removeClass("d-none");
-            if (provincia == 4 ) {
-                 $("#heart").css("left", "1000px");
-                 $("#heart").css("top", "300px");
-            }else if(provincia == 6){
+            $("#heart").css("top", "300px");
+            if (provincia == 4) {
+                $("#heart").css("left", "1000px");
+            } else if (provincia == 6) {
                 $("#heart").css("left", "250px");
-                 $("#heart").css("top", "300px");
             }
         } else {
             $("#heart").addClass("d-none");
         }
-        if(provincia==3){
-            $(function() {
-               nieve= $(document).snow({ SnowImage: "./snow/snow.gif" });
+        //Nieva si es granada
+        if (provincia == 3) {
+            $(function () {
+                nieve = $(document).snow({ SnowImage: "./snow/snow.gif" });
             });
-        }else{
+        } else {
             hidesnow();
         }
 
@@ -347,9 +350,9 @@ function controlarPreguntas() {
     $(this).parent().children().attr("disabled", true);
     var texto = $(this).next().text();
 
-    if (texto == objProvincia[0].respuestaCorrecta) {
-        sessionStorage.setItem("puntos", parseInt(sessionStorage.getItem("puntos")) + 100);
-        $("#puntos").text(sessionStorage.getItem("puntos"));
+    if (texto == objPreguntas[0].respuestaCorrecta) {
+        puntos+=100;
+        $("#puntos").text(puntos);
         $(this).attr("disabled", false);
 
         // Selecciono el radio y de ahí le digo que la siguiente etiqueta (label) cambie el color
@@ -361,12 +364,13 @@ function controlarPreguntas() {
         var divPrincipal = $("<div>", {
             "class": "col text-center py-4", "id": "descripcion"
         }).append($("<p>", {
-            "text": objProvincia[0].descripcion
+            "text": objPreguntas[0].descripcion
         }));
         $(" #modal .modal-body").append(divPrincipal);
 
 
     } else {
+        //Si ha fallado
         $(this).attr("disabled", false);
         $(this).next().removeClass("btn-outline-info").addClass("btn-outline-danger");
 
@@ -376,47 +380,51 @@ function controlarPreguntas() {
         // $("#modal label[text=]")
         $("#modal label").each(function (i) {
             var respuesta = $(this).text();
-            if (respuesta == objProvincia[0].respuestaCorrecta) {
+            if (respuesta == objPreguntas[0].respuestaCorrecta) {
 
                 $(this).removeClass("btn-outline-info").addClass("bg-success");
 
                 var divPrincipal = $("<div>", {
                     "class": "col text-center py-4", "id": "descripcion"
                 }).append($("<p>", {
-                    "text": objProvincia[0].descripcion
+                    "text": objPreguntas[0].descripcion
                 }));
                 $(" #modal .modal-body").append(divPrincipal);
             }
 
         });
 
+        //Quitamos una vida
         var last = $("#vidas").children().last();
         for (let i = 3; i >= -1; i--) {
             if (last.hasClass("fas")) {
-                if (i == -1) {
-                    $("#modalGameOver").modal("show");
-                    //Para repetir el juego en el caso de que hayamos perdido
-                    $("#botonSi").click(function () {
-                        window.location.replace("./provincia.html");
-                    });
-                    $("#botonNo").click(function () {
-                        window.location.replace("./../index.php?action=entrarPartida");
-                    });
-                }
                 //Caida de piedra cuando falla
-                $("#piedra").fadeIn();
+                $("#piedra").delay(600).fadeIn();
                 $("#piedra").css("left", parseInt($("#munieco").css("left").split(/px/)[0]) + 40)
                 $("#piedra").animate({
                     top: "+=520" + "px"
                 }, 500, function () {
                     $("#impacto").fadeIn();
+                    $("body").append("<audio src='./../images/piedra.mp3' autoplay></audio>")
                     $("#impacto").css("left", $("#piedra").css("left"));
+                    $("#impacto").delay(1000).fadeOut();
+                    last.removeClass("fas").addClass("far");
+                    vida--;
+                    //Si ha perdido toda la vida
+                    if (vida == 0) {
+                        $("#modalGameOver").modal("show");
+                        $(document).off("keydown");
+                        //Para repetir el juego en el caso de que hayamos perdido
+                        $("#botonSi").click(function () {
+                            window.location.replace("./provincia.html");
+                        });
+                        $("#botonNo").click(function () {
+                            window.location.replace("./../index.php?action=entrarPartida");
+                        });
+                    }
                 });
-                $("body").append("<audio src='./../images/piedra.mp3' autoplay></audio>")
                 $("#piedra").fadeOut(2000);
                 $("#piedra").css("top", 0);
-                last.removeClass("fas").addClass("far");
-                sessionStorage.setItem("vida", parseInt(sessionStorage.getItem("vida")) - 1);
                 break;
             } else {
                 last = last.parent().children().eq(i);
@@ -424,10 +432,6 @@ function controlarPreguntas() {
 
         }
 
-
-        // y después quitar 1 vida y llevarlo a gameOver un modal que pregunta si quieres repetir
-        // si dice que si lleva otra vez a la pantalla de seleccion de personajes
-        // si dice que no que lleve a la pantalla de INICIO ingresar mote
     }
 
 }
@@ -444,23 +448,21 @@ function crearArbolPreguntas() {
 
         success: function (response) {
 
-            objProvincia = JSON.parse(response);
-            $("#modal img").attr("src", "./../images/monumentos/" + objProvincia[0].img);
+            objPreguntas = JSON.parse(response);
+            $("#modal img").attr("src", "./../images/monumentos/" + objPreguntas[0].img);
 
-            $("#modal .modal-title").text(objProvincia[0].pregunta);
+            $("#modal .modal-title").text(objPreguntas[0].pregunta);
 
             var labels = [...$("#modal label")];
             var posicionCorrecta = Math.floor(Math.random() * 3);
             var contResp = 1;
 
             for (let i = 0; i < labels.length; i++) {
-
                 if (i == posicionCorrecta) {
-                    $("#modal #danger-outlined-" + (i + 1)).next().text(objProvincia[0].respuestaCorrecta);
+                    $("#modal #danger-outlined-" + (i + 1)).next().text(objPreguntas[0].respuestaCorrecta);
                 } else {
-                    $("#modal #danger-outlined-" + (i + 1)).next().text(objProvincia[0]["respuesta" + contResp]);
+                    $("#modal #danger-outlined-" + (i + 1)).next().text(objPreguntas[0]["respuesta" + contResp]);
                     contResp++;
-
                 }
             }
 

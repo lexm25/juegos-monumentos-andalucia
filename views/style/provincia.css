@@ -16,3 +16,23 @@ body{
     background-position: center center!important;
     background-attachment: fixed!important;   
 }
+
+#heart{
+    position: absolute; top:0px ; left: 250px;
+}
+
+#munieco{
+    position: absolute;z-index:2; top:300px;
+}
+
+#monumento{
+    top:400px;z-index:1;
+}
+
+#botonPregunta{
+    color: black!important;
+}
+
+#impacto{
+    z-index:4 ;top:520px;display: none;
+}
