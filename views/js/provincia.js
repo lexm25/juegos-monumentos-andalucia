@@ -15,12 +15,12 @@ $(document).ready(function () {
     $("#login").click(function () {
         sessionStorage.setItem("mote", $("#mote").val());
         if ($("#mote").val() != 0) {
-            window.location.replace("./views/provinciaBorrador.html");
+            window.location.replace("./views/provincia.html");
         } else {
             $("#mote").parent().parent().parent().append("<div class='text-danger'>Introduce un nombre porfavor</div>");
         }
     })
-    $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='far fa-heart'></i><i class='far fa-heart'></i>")
+    $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i>")
     $("#modalMunieco").modal("show");
     $("#modalMuniecoEvento").click(function () {
         var muniecoSeleccionado = [...$(this).parent().parent().find(".modal-body").children()].filter((m) => m.checked == true);
@@ -203,7 +203,7 @@ function mover(e) {
 
                     //Si se come el corazón
                     if (munLeft >= heartLeft && munLeft <= (heartwidth + 100) && munTop <= heartTop) {
-                        if (parseInt(sessionStorage.getItem("vida")) < 6) {
+                        if (parseInt(sessionStorage.getItem("vida")) < 5) {
                             sessionStorage.setItem("vida", parseInt(sessionStorage.getItem("vida")) + 1);
                             $("body").append("<audio src='./../images/heart.mp3' autoplay></audio>");
 
@@ -270,7 +270,7 @@ function finalPantalla(leftMunieco) {
     //Si el muñeco ha llegado hasta el final de la pantalla 
     if (window.innerWidth <= leftMunieco + parseInt($("#munieco").css("width").split(/px/)[0])) {
         //Enviar los datos al servidor en el caso de la última provincia
-        if (provincia + 1 == 6) {
+        if (provincia == 8) {
             var sBD = s, mBD = m;
             if (s < 9) {
                 sBD = "0" + s;
@@ -308,7 +308,7 @@ function finalPantalla(leftMunieco) {
             type: "get",
             success: function (response) {
                 var provincia = JSON.parse(response);
-                $("#fondo").css("background", "linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)) , url(./../images/monumentos/" + provincia[0].fondo + ")");
+                $("body").css("background", "linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)) , url(./../images/monumentos/" + provincia[0].fondo + ")");
                 $("#monumento").attr("src", "./../images/monumentos/" + provincia[0].imagen);
             }
         });
@@ -317,8 +317,11 @@ function finalPantalla(leftMunieco) {
         //sitios que aparece el corazón
         if (provincia == 2 || provincia == 4 || provincia == 6) {
             $("#heart").removeClass("d-none");
-            if (provincia == 4) {
+            if (provincia == 4 ) {
                  $("#heart").css("left", "1000px");
+                 $("#heart").css("top", "300px");
+            }else if(provincia == 6){
+                $("#heart").css("left", "250px");
                  $("#heart").css("top", "300px");
             }
         } else {
@@ -394,7 +397,7 @@ function controlarPreguntas() {
                     $("#modalGameOver").modal("show");
                     //Para repetir el juego en el caso de que hayamos perdido
                     $("#botonSi").click(function () {
-                        window.location.replace("./provinciaBorrador.html");
+                        window.location.replace("./provincia.html");
                     });
                     $("#botonNo").click(function () {
                         window.location.replace("./../index.php?action=entrarPartida");

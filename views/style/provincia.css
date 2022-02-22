@@ -9,10 +9,10 @@
     color: black;
 }
 
-#fondo{
+body{
     background: linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)) , url("../../images/monumentos/Torre-del-Oro-Sevilla.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;   
+    background-size: 100% 100%!important;
+    background-repeat: no-repeat!important;
+    background-position: center center!important;
+    background-attachment: fixed!important;   
 }

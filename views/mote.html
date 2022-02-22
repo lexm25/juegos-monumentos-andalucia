@@ -12,52 +12,49 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" type="text/css" href="views/style/mote.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="./views/js/pasarPagina.js"></script>
+  <script src="./views/js/provincia.js"></script>
   <link rel="icon" type="image/x-icon" href="../images/andaluciaFavicon.png">
-  
+
 </head>
 
-<header class="p-3">
-  <div class="d-flex flex-wrap ">
-    <div class="col-10"></div>
-    <div class="col-2 dropdown">
-      <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./images/monumentos/Bandera_de_Andalucia.svg.png" width="25%" height="25%" class="rounded-circle">
-      </a>
-      <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="./index.php?action=resultado">RÁNKING</a></li>
-      </ul>
+<body>
+  <header class="p-3">
+    <div class="d-flex flex-wrap ">
+      <div class="col-10"></div>
+      <div class="col-2 dropdown">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="./images/monumentos/Bandera_de_Andalucia.svg.png" width="25%" height="25%" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="./index.php?action=resultado">RÁNKING</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</header>
-<div id="espaciador"></div>
+  </header>
+  <div id="espaciador"></div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-4"></div>
-
-    <div class="col-4" id="prueba">
-      <div class="text-center">
-        <!--RUTA INDEX.PHP-->
-        <form method="post">
-          <div id="separador"></div>
-          <label style="font-size: 30px;">INTRODUZCA SU MOTE</label>
-          <div id="separador">
-            <br>
-            <input id="mote" type="text" class="form-control" name="mote">
+  <div class="container">
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4" id="prueba">
+        <div class="text-center">
+          <form method="post">
+            <div id="separador"></div>
+            <label style="font-size: 30px;">INTRODUZCA SU MOTE</label>
             <div id="separador">
               <br>
-              <input type="button" class="w-100 btn btn-lg" id="login" value="Entrar">
-            </div>
-        </form>
+              <input id="mote" type="text" class="form-control" name="mote">
+              <div id="separador">
+                <br>
+                <input type="button" class="w-100 btn btn-lg" id="login" value="Entrar">
+              </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="col-4"></div>
-</div>
-</main>
+  <div class="col-4"></div>
 </body>
 
 </html>
