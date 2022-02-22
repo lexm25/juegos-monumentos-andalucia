@@ -8,3 +8,11 @@
 #modalMuniecoEvento{
     color: black;
 }
+
+#fondo{
+    background: linear-gradient(rgba(255, 255, 255, 0.267), rgba(255, 255, 255, .5)) , url("../../images/monumentos/Torre-del-Oro-Sevilla.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;   
+}
