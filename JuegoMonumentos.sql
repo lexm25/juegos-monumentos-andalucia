@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 21-02-2022 a las 14:21:33
+-- Tiempo de generación: 22-02-2022 a las 11:55:51
 -- Versión del servidor: 8.0.28-0ubuntu0.20.04.3
 -- Versión de PHP: 7.4.3
 
@@ -51,47 +51,6 @@ CREATE TABLE `partidas` (
   `vida` int NOT NULL,
   `tiempo` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Volcado de datos para la tabla `partidas`
---
-
-INSERT INTO `partidas` (`id`, `mote`, `puntos`, `vida`, `tiempo`) VALUES
-(1, 'Kimia', 0, 0, '00:00:00'),
-(2, 'Kimia', 0, 0, '00:00:00'),
-(3, 'Kimia', 0, 0, '00:00:00'),
-(4, 'Kimia', 0, 0, '00:00:00'),
-(5, 'f', 0, 6, '00:00:40'),
-(6, 'e', 4, 1, '24:42:52'),
-(7, 'y', 4, 3, '18:56:12'),
-(8, 'rrrr', 4, 3, '08:58:08'),
-(9, 'Kimiaaa', 0, 0, '00:00:00'),
-(10, 'Kimiaaa', 0, 0, '00:00:00'),
-(11, 'Kimiaaa', 0, 0, '00:00:00'),
-(12, 'Kimiaaa', 0, 0, '00:00:00'),
-(13, 'Kimiaaannnnn', 0, 0, '00:00:00'),
-(14, 'Kimiaaannnnnas', 0, 0, '00:00:00'),
-(15, 'h', 0, 0, '00:00:00'),
-(16, 'Beeb', 0, 0, '00:00:00'),
-(17, 'Beeb', 0, 0, '00:00:00'),
-(18, 'Beeb', 0, 0, '00:00:00'),
-(19, 'Beeb', 0, 0, '00:00:00'),
-(20, 'heyyou', 0, 0, '00:00:00'),
-(21, 's', 0, 0, '00:00:00'),
-(22, 'dd', 0, 0, '00:00:00'),
-(23, 'Kimiaaa', 0, 0, '00:00:00'),
-(24, 'Kimiaaa', 0, 0, '00:00:00'),
-(25, 'ff', 0, 0, '00:00:00'),
-(26, 'ss', 0, 0, '00:00:00'),
-(27, 'dcd', 0, 0, '00:00:00'),
-(28, 'd', 0, 0, '00:00:00'),
-(29, 'dhhh', 0, 0, '00:00:00'),
-(30, 's', 0, 0, '00:00:00'),
-(31, 'fdf', 0, 0, '00:00:00'),
-(32, 'dd', 0, 0, '00:00:00'),
-(33, 'Kimiaaa', 0, 6, '00:00:18'),
-(34, 'Kimiaaa', 100, 5, '00:00:21'),
-(35, 'Kimiaaa', 100, 5, '00:00:21');
 
 -- --------------------------------------------------------
 
@@ -144,16 +103,14 @@ CREATE TABLE `provincias` (
 --
 
 INSERT INTO `provincias` (`id`, `nombre`, `imagen`, `fondo`) VALUES
-(1, 'archivoIndias', 'archivo-indias-1.jpg', 'Bandera_de_Andalucia.svg.png'),
-(2, 'plazaEspania', 'plazaesp.jpg', 'maxresdefault.jpg'),
-(3, 'sevilla', 'giralda-bovedas.jpg', ''),
-(4, 'cordoba', 'mezquita-cordoba.jpg', ''),
-(5, 'granada', 'alhambra.jpg', ''),
-(6, 'huelva', 'muelle-del-tinto.jpg', ''),
-(7, 'malaga', 'alcazaba.jpg', ''),
-(8, 'almeria', 'cable-ingles.jpg', ''),
-(9, 'jaen', 'santa-catalina.jpg', ''),
-(10, 'cadiz', 'falla.jpg', '');
+(1, 'sevilla', 'plazaesp.jpg', 'Torre-del-Oro-Sevilla.jpg'),
+(2, 'cordoba', 'mezquita-cordoba.jpg', 'cordoba.jpg'),
+(3, 'granada', 'alhambra.jpg', 'maxresdefault.jpg'),
+(4, 'huelva', 'muelle-del-tinto.jpg', 'huelva.jpg'),
+(5, 'malaga', 'alcazaba.jpg', 'malaga.jpg'),
+(6, 'almeria', 'cable-ingles.jpg', 'almeria.jpg'),
+(7, 'jaen', 'santa-catalina.jpg', 'jaen.jpg'),
+(8, 'cadiz', 'falla.jpg', 'cadiz.jpg');
 
 -- --------------------------------------------------------
 
@@ -184,6 +141,7 @@ ALTER TABLE `preguntas`
 -- Indices de la tabla `provincias`
 --
 ALTER TABLE `provincias`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id` (`id`);
 
 --
@@ -194,7 +152,7 @@ ALTER TABLE `provincias`
 -- AUTO_INCREMENT de la tabla `partidas`
 --
 ALTER TABLE `partidas`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `provincias`
