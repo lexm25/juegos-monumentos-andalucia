@@ -11,7 +11,7 @@ function __ShowSnow(settings)
 {
 
     var snowsrc = settings.SnowImage;
-    var no = settings.Quantity;
+     no = settings.Quantity;
 
     var dx, xp, yp;    // coordinate and position variables
     var am, stx, sty;  // amplitude and step variables
@@ -76,14 +76,7 @@ function __ShowSnow(settings)
         snowtimer = setTimeout(animateSnow, 10);
     };
 
-	function hidesnow()
-    {
-		if(window.snowtimer)
-            clearTimeout(snowtimer)
 
-        for (i = 0; i < no; i++)
-            flakes[i].hide();
-	}
 		
     animateSnow();
 	if (settings.HideSnowTime > 0)
@@ -106,3 +99,11 @@ function __ShowSnow(settings)
 
 })(jQuery);
 
+function hidesnow()
+{
+    if(window.snowtimer)
+        clearTimeout(snowtimer)
+
+    for (i = 0; i < no; i++)
+        flakes[i].hide();
+}

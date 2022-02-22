@@ -326,12 +326,10 @@ function finalPantalla(leftMunieco) {
         }
         if(provincia==3){
             $(function() {
-                $(document).snow({ SnowImage: "./snow/snow.gif" });
+               nieve= $(document).snow({ SnowImage: "./snow/snow.gif" });
             });
         }else{
-           /* $(function() {
-                $(document).snow({ SnowImage: "./snow/snow.gif" }).hidesnow();
-            });  */    
+            hidesnow();
         }
 
     }
