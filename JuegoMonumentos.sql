@@ -24,19 +24,6 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `JuegoMonumentos` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `JuegoMonumentos`;
 
--- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `finalResultado`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `finalResultado` (
-`id` int
-,`mote` text
-,`puntos` int
-,`vida` int
-,`tiempo` time
-);
 
 -- --------------------------------------------------------
 
@@ -112,14 +99,7 @@ INSERT INTO `provincias` (`id`, `nombre`, `imagen`, `fondo`) VALUES
 (7, 'jaen', 'santa-catalina.jpg', 'jaen.jpg'),
 (8, 'cadiz', 'falla.jpg', 'cadiz.jpg');
 
--- --------------------------------------------------------
-
---
--- Estructura para la vista `finalResultado`
---
-DROP TABLE IF EXISTS `finalResultado`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `finalResultado`  AS  select `partidas`.`id` AS `id`,`partidas`.`mote` AS `mote`,`partidas`.`puntos` AS `puntos`,`partidas`.`vida` AS `vida`,`partidas`.`tiempo` AS `tiempo` from `partidas` where (`partidas`.`id` = 1) ;
+-- -----------------------------------------------------
 
 --
 -- Índices para tablas volcadas

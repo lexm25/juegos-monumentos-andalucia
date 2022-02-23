@@ -7,8 +7,8 @@ var provincia = 1;
 var modalShown = false;
 //Array de preguntas
 var objPreguntas = [];
-var vida= 5;
-var puntos= 0;
+var vida = 5;
+var puntos = 0;
 
 $(document).ready(function () {
 
@@ -20,6 +20,7 @@ $(document).ready(function () {
             $("#mote").parent().parent().parent().append("<div class='text-danger'>Introduce un nombre porfavor</div>");
         }
     })
+    $("#mote").text(sessionStorage.getItem("mote"));
     $("#vidas").append("<i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i><i class='fas fa-heart'></i>")
     $("#modalMunieco").modal("show");
     $("#modalMuniecoEvento").click(function () {
@@ -91,6 +92,9 @@ $(document).ready(function () {
             mBD = "0" + m;
         }
         $("#cronometro").text(mBD + ":" + sBD);
+        if (m == 1) {
+            gameOver('tiempo');
+        }
     }, 1000);
 
 });
@@ -172,7 +176,7 @@ function mover(e) {
         controlarModalMonumento(left);
 
     }
-    
+
 
     //Si pulsa la tecla Space o la flecha arriba, salta
     if (e.keyCode == 32 || e.keyCode == 38) {
@@ -351,7 +355,7 @@ function controlarPreguntas() {
     var texto = $(this).next().text();
 
     if (texto == objPreguntas[0].respuestaCorrecta) {
-        puntos+=100;
+        puntos += 100;
         $("#puntos").text(puntos);
         $(this).attr("disabled", false);
 
@@ -412,15 +416,7 @@ function controlarPreguntas() {
                     vida--;
                     //Si ha perdido toda la vida
                     if (vida == 0) {
-                        $("#modalGameOver").modal("show");
-                        $(document).off("keydown");
-                        //Para repetir el juego en el caso de que hayamos perdido
-                        $("#botonSi").click(function () {
-                            window.location.replace("./provincia.html");
-                        });
-                        $("#botonNo").click(function () {
-                            window.location.replace("./../index.php?action=entrarPartida");
-                        });
+                        gameOver();
                     }
                 });
                 $("#piedra").fadeOut(2000);
@@ -467,5 +463,21 @@ function crearArbolPreguntas() {
             }
 
         }
+    });
+}
+
+
+function gameOver(razon){
+    if(razon=="tiempo"){
+        $("#modalGameOver .modal-body p").text("Lo siento, se te ha acabado el tiempo... Eres muy lento. ¿Quieres volver a jugar?")
+    }
+    $("#modalGameOver").modal("show");
+    $(document).off("keydown");
+    //Para repetir el juego en el caso de que hayamos perdido
+    $("#botonSi").click(function () {
+        window.location.replace("./provincia.html");
+    });
+    $("#botonNo").click(function () {
+        window.location.replace("./../index.php?action=entrarPartida");
     });
 }
