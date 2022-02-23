@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.min.css" />
+    <script src="./js/provincia.js"></script>
+    <script type="text/javascript" src="./snow/snow.js"></script>
+    <title>Preguntas monumentos</title>
+    <link rel="stylesheet" type="text/css" href="./style/provincia.css">
+    <link rel="icon" type="image/x-icon" href="../images/andaluciaFavicon.png">
+
+
+</head>
+
+<body>
+    <img id="piedra" width="80px" src="../images/piedra.png" class="position-absolute "
+        style="z-index:4;display: none;">
+
+    <!-- CABECERA -->
+    <div class="row">
+        <div class="col-4 px-5 d-flex align-items-center">
+            <h1 id="mote">Monumento</h1>
+        </div>
+        <div class="col-4 d-flex justify-content-center  my-3 ">
+            <div class="col-3 border  border-dark py-1 bg-secondary text-center fs-2 rounded-pill" id="cronometro">
+            </div>
+        </div>
+        <div class="col-4 row d-flex justify-content-center align-items-center ">
+            <div class="col-6 text-danger h1 d-flex justify-content-evenly" style="position: relative;" id="vidas">
+            </div>
+            <div class="col-6 h2" id="puntos">0</div>
+        </div>
+    </div>
+
+    <img id="heart" class="d-none" src="../images/heart.gif" width="100px" height="100px">
+
+    <div class="text-center" id="munieco"></div>
+
+    <div class="text-center">
+        <img id="monumento" class="position-absolute" src="../images/monumentos/plazaesp.jpg" width="200px" height="200px">
+    </div>
+
+    <img id="nube1" src="../images/nube1.png" class="nubes position-absolute " style="left: 600px;" width="300px">
+    <img id="nube2" src="../images/nube2.png" class="nubes position-absolute " style="left: 200px;" width="300px">
+    <img id="nube3" src="../images/nube1.png" class="nubes position-absolute " style="left: 900px;" width="300px">
+    <img id="nube4" src="../images/nube1.png" class="nubes position-absolute " style="left: 100px;" width="300px">
+    <img id="nube5" src="../images/nube2.png" class="nubes position-absolute " style="left: 1000px;" width="300px">
+    <img id="nube6" src="../images/nube1.png" class="nubes position-absolute " style="left: 100px;" width="300px">
+    <img id="nube7" src="../images/nube2.png" class="nubes position-absolute " style="left: 500px;" width="300px">
+    <img id="nube8" src="../images/nube1.png" class="nubes position-absolute " style="left: 700px;" width="300px">
+    <img id="nube9" src="../images/nube2.png" class="nubes position-absolute " style="left: 700px;" width="300px">
+
+
+    <!-- MODAL PREGUNTA -->
+    <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                    </h5>
+
+                </div>
+                <div class="modal-body">
+                    <div class="col">
+                        <img src="" class="img-fluid rounded" alt="...">
+                    </div>
+                    <div class="col text-center py-4">
+                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined-1"
+                            autocomplete="off">
+                        <label class="btn btn-outline-info text-black" for="danger-outlined-1"></label>
+
+                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined-2"
+                            autocomplete="off">
+                        <label class="btn btn-outline-info text-black" for="danger-outlined-2"></label>
+
+                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined-3"
+                            autocomplete="off">
+                        <label class="btn btn-outline-info text-black" for="danger-outlined-3"></label>
+
+                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined-4"
+                            autocomplete="off">
+                        <label class="btn btn-outline-info text-black" for="danger-outlined-4"></label>
+                    </div>
+                </div>
+                <div class="modal-footer bg-success">
+                    <button type="button" class="btn btn-secondary bg-white botonCerrar" id="botonPregunta"
+                        data-bs-dismiss="modal">Cerrar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL SELECCIÓN PERSONAJE -->
+    <div class="modal fade" id="modalMunieco" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">¿Cuál eliges para tu personaje?
+                    </h5>
+                </div>
+                <div class="modal-body">
+
+                    <input type="radio" class="btn-check" name="options-outlined" id="m1" autocomplete="off" required>
+                    <label class="btn btn-outline-success" for="m1"><img
+                            src="./../images/Crab/49839aa1b0feed02a3c759db5f8dee71.svg" width="200px"
+                            height="200px"></label>
+
+                    <input type="radio" class="btn-check" name="options-outlined" id="m2" autocomplete="off" required>
+                    <label class="btn btn-outline-success text-black" for="m2"><img
+                            src="./../images/Dog2/6afc06388d69f99e28d883126f9b2734.svg" width="200px"
+                            height="200px"></label>
+
+                    <input type="radio" class="btn-check" name="options-outlined" id="m3" autocomplete="off" required>
+                    <label class="btn btn-outline-success " for="m3"><img
+                            src="./../images/Bear-walking/0a38a860f2e573b8dc5b09f390d30fbd.svg" width="200px"
+                            height="200px"></label>
+
+                    <input type="radio" class="btn-check" name="options-outlined" id="m4" autocomplete="off" required>
+                    <label class="btn btn-outline-success" for="m4"><img
+                            src="./../images/Cat/0fb9be3e8397c983338cb71dc84d0b25.svg" width="200px"
+                            height="200px"></label>
+
+                </div>
+                <div class="modal-footer bg-success">
+                    <button id="modalMuniecoEvento" type="button"
+                        class="btn btn-success botonCerrar bg-white">Play!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL GameOver -->
+    <div class="modal fade" id="modalGameOver" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">
+                        ¡¡Game Over!!
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <p>Lo siento, Has perdido... ¿Quieres repetir el juego?</p>
+                </div>
+                <div class="modal-footer bg-success">
+                    <button type="button" class="btn btn-secondary bg-white text-black" id="botonSi" data-bs-dismiss="modal">Sí, !Por supuesto!</button>
+                    <button type="button" class="btn btn-secondary bg-white text-black" id="botonNo" data-bs-dismiss="modal">No, No me gusta este juego</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <img id='impacto' width='100px' class="position-absolute" src='../images/impacto.png'>
+
+    <div class="row position-relative" style="top: 350px;">
+        <img src="../images/camino.png" alt="" class="col-4 px-0" height="250px">
+        <img src="../images/camino.png" alt="" class="col-4 px-0" height="250px">
+        <img src="../images/camino.png" alt="" class="col-4 px-0" height="250px">
+    </div>
+</body>
+
+</html>
