@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 22-02-2022 a las 11:55:51
+-- Tiempo de generación: 23-02-2022 a las 20:23:33
 -- Versión del servidor: 8.0.28-0ubuntu0.20.04.3
 -- Versión de PHP: 7.4.3
 
@@ -24,7 +24,6 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `JuegoMonumentos` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `JuegoMonumentos`;
 
-
 -- --------------------------------------------------------
 
 --
@@ -38,6 +37,16 @@ CREATE TABLE `partidas` (
   `vida` int NOT NULL,
   `tiempo` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Volcado de datos para la tabla `partidas`
+--
+
+INSERT INTO `partidas` (`id`, `mote`, `puntos`, `vida`, `tiempo`) VALUES
+(1, 'Eddy', 300, 5, '00:03:59'),
+(2, 'Kimia', 300, 2, '00:02:32'),
+(3, 'Jose Pablo', 500, 3, '00:03:02'),
+(4, 'Alejandro', 500, 4, '00:03:02');
 
 -- --------------------------------------------------------
 
@@ -99,8 +108,6 @@ INSERT INTO `provincias` (`id`, `nombre`, `imagen`, `fondo`) VALUES
 (7, 'jaen', 'santa-catalina.jpg', 'jaen.jpg'),
 (8, 'cadiz', 'falla.jpg', 'cadiz.jpg');
 
--- -----------------------------------------------------
-
 --
 -- Índices para tablas volcadas
 --
@@ -132,7 +139,7 @@ ALTER TABLE `provincias`
 -- AUTO_INCREMENT de la tabla `partidas`
 --
 ALTER TABLE `partidas`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `provincias`
