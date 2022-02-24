@@ -92,7 +92,7 @@ $(document).ready(function () {
             mBD = "0" + m;
         }
         $("#cronometro").text(mBD + ":" + sBD);
-        if (m == 4) {
+        if (m == 6) {
             gameOver('tiempo');
         }
     }, 1000);
